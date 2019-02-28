@@ -8,16 +8,17 @@
 
 import UIKit
 
-class MasterViewController: UITableViewController {
+class SuperheroListView: UITableViewController {
 
-    var detailViewController: DetailViewController? = nil
+    var superheroDetailView: SuperheroDetailView? = nil
+    let viewModel = SuperheroListViewModel()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         if let split =  splitViewController {
             let controllers = split.viewControllers
-            detailViewController = (controllers.last as! UINavigationController).topViewController as? DetailViewController
+            superheroDetailView = (controllers.last as! UINavigationController).topViewController as? SuperheroDetailView
         }
     }
 
@@ -30,9 +31,7 @@ class MasterViewController: UITableViewController {
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showDetail" {
-            let controller = (segue.destination as! UINavigationController).topViewController as! DetailViewController
-            controller.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
-            controller.navigationItem.leftItemsSupplementBackButton = true
+            showSuperheroDetails(segue)
         }
     }
 
@@ -43,14 +42,25 @@ class MasterViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 20
+        return viewModel.superheroes.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
 
-        cell.textLabel!.text = "Hello \(indexPath.row)!"
+        cell.textLabel!.text =  viewModel.superheroes[indexPath.row].Name
         return cell
+    }
+    
+    private func showSuperheroDetails(_ segue: UIStoryboardSegue) {
+        guard
+            let indexPath = tableView.indexPathForSelectedRow,
+            let controller = (segue.destination as? UINavigationController)?.topViewController as? SuperheroDetailView
+            else { return }
+        
+        controller.viewModel = SuperheroDetailViewModel(viewModel.superheroes[indexPath.row])
+        controller.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
+        controller.navigationItem.leftItemsSupplementBackButton = true
     }
 }
 

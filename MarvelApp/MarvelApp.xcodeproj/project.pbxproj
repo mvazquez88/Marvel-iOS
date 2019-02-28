@@ -8,12 +8,17 @@
 
 /* Begin PBXBuildFile section */
 		C22822B822285624009AB12C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C22822B722285624009AB12C /* AppDelegate.swift */; };
-		C22822BA22285624009AB12C /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C22822B922285624009AB12C /* MasterViewController.swift */; };
-		C22822BC22285624009AB12C /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C22822BB22285624009AB12C /* DetailViewController.swift */; };
+		C22822BA22285624009AB12C /* SuperheroListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C22822B922285624009AB12C /* SuperheroListView.swift */; };
+		C22822BC22285624009AB12C /* SuperheroDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C22822BB22285624009AB12C /* SuperheroDetailView.swift */; };
 		C22822BF22285624009AB12C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C22822BD22285624009AB12C /* Main.storyboard */; };
 		C22822C122285625009AB12C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C22822C022285625009AB12C /* Assets.xcassets */; };
 		C22822CF22285625009AB12C /* MarvelAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C22822CE22285625009AB12C /* MarvelAppTests.swift */; };
 		C22822DA22285625009AB12C /* MarvelAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C22822D922285625009AB12C /* MarvelAppUITests.swift */; };
+		C2A5F132222886D4007D45AE /* Superhero.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2A5F131222886D4007D45AE /* Superhero.swift */; };
+		C2A5F136222887D3007D45AE /* SuperheroService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2A5F135222887D3007D45AE /* SuperheroService.swift */; };
+		C2A5F13A22288F46007D45AE /* SuperheroViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2A5F13922288F46007D45AE /* SuperheroViewModel.swift */; };
+		C2A5F13C222891F4007D45AE /* SuperheroListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2A5F13B222891F4007D45AE /* SuperheroListViewModel.swift */; };
+		C2A5F13F222896D6007D45AE /* SuperheroDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2A5F13E222896D6007D45AE /* SuperheroDetailViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,8 +41,8 @@
 /* Begin PBXFileReference section */
 		C22822B422285624009AB12C /* MarvelApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MarvelApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C22822B722285624009AB12C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		C22822B922285624009AB12C /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
-		C22822BB22285624009AB12C /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		C22822B922285624009AB12C /* SuperheroListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuperheroListView.swift; sourceTree = "<group>"; };
+		C22822BB22285624009AB12C /* SuperheroDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuperheroDetailView.swift; sourceTree = "<group>"; };
 		C22822BE22285624009AB12C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C22822C022285625009AB12C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C22822C522285625009AB12C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -47,6 +52,11 @@
 		C22822D522285625009AB12C /* MarvelAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MarvelAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C22822D922285625009AB12C /* MarvelAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelAppUITests.swift; sourceTree = "<group>"; };
 		C22822DB22285625009AB12C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C2A5F131222886D4007D45AE /* Superhero.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Superhero.swift; sourceTree = "<group>"; };
+		C2A5F135222887D3007D45AE /* SuperheroService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuperheroService.swift; sourceTree = "<group>"; };
+		C2A5F13922288F46007D45AE /* SuperheroViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuperheroViewModel.swift; sourceTree = "<group>"; };
+		C2A5F13B222891F4007D45AE /* SuperheroListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuperheroListViewModel.swift; sourceTree = "<group>"; };
+		C2A5F13E222896D6007D45AE /* SuperheroDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuperheroDetailViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,9 +107,10 @@
 		C22822B622285624009AB12C /* MarvelApp */ = {
 			isa = PBXGroup;
 			children = (
+				C2A5F13D22289381007D45AE /* View */,
+				C2A5F13822288F30007D45AE /* Application */,
+				C2A5F130222886BF007D45AE /* Domain */,
 				C22822B722285624009AB12C /* AppDelegate.swift */,
-				C22822B922285624009AB12C /* MasterViewController.swift */,
-				C22822BB22285624009AB12C /* DetailViewController.swift */,
 				C22822BD22285624009AB12C /* Main.storyboard */,
 				C22822C022285625009AB12C /* Assets.xcassets */,
 				C22822C522285625009AB12C /* Info.plist */,
@@ -123,6 +134,58 @@
 				C22822DB22285625009AB12C /* Info.plist */,
 			);
 			path = MarvelAppUITests;
+			sourceTree = "<group>";
+		};
+		C2A5F130222886BF007D45AE /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				C2A5F134222887BB007D45AE /* Service */,
+				C2A5F133222887AF007D45AE /* Model */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		C2A5F133222887AF007D45AE /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C2A5F131222886D4007D45AE /* Superhero.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		C2A5F134222887BB007D45AE /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				C2A5F135222887D3007D45AE /* SuperheroService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		C2A5F13722288F22007D45AE /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				C2A5F13922288F46007D45AE /* SuperheroViewModel.swift */,
+				C2A5F13B222891F4007D45AE /* SuperheroListViewModel.swift */,
+				C2A5F13E222896D6007D45AE /* SuperheroDetailViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		C2A5F13822288F30007D45AE /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				C2A5F13722288F22007D45AE /* ViewModel */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		C2A5F13D22289381007D45AE /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C22822B922285624009AB12C /* SuperheroListView.swift */,
+				C22822BB22285624009AB12C /* SuperheroDetailView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -255,9 +318,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C22822BC22285624009AB12C /* DetailViewController.swift in Sources */,
-				C22822BA22285624009AB12C /* MasterViewController.swift in Sources */,
+				C22822BC22285624009AB12C /* SuperheroDetailView.swift in Sources */,
+				C22822BA22285624009AB12C /* SuperheroListView.swift in Sources */,
+				C2A5F13A22288F46007D45AE /* SuperheroViewModel.swift in Sources */,
 				C22822B822285624009AB12C /* AppDelegate.swift in Sources */,
+				C2A5F132222886D4007D45AE /* Superhero.swift in Sources */,
+				C2A5F13F222896D6007D45AE /* SuperheroDetailViewModel.swift in Sources */,
+				C2A5F136222887D3007D45AE /* SuperheroService.swift in Sources */,
+				C2A5F13C222891F4007D45AE /* SuperheroListViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
