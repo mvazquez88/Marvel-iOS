@@ -12,7 +12,6 @@
 		C22822BC22285624009AB12C /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C22822BB22285624009AB12C /* DetailViewController.swift */; };
 		C22822BF22285624009AB12C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C22822BD22285624009AB12C /* Main.storyboard */; };
 		C22822C122285625009AB12C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C22822C022285625009AB12C /* Assets.xcassets */; };
-		C22822C422285625009AB12C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C22822C222285625009AB12C /* LaunchScreen.storyboard */; };
 		C22822CF22285625009AB12C /* MarvelAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C22822CE22285625009AB12C /* MarvelAppTests.swift */; };
 		C22822DA22285625009AB12C /* MarvelAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C22822D922285625009AB12C /* MarvelAppUITests.swift */; };
 /* End PBXBuildFile section */
@@ -41,7 +40,6 @@
 		C22822BB22285624009AB12C /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		C22822BE22285624009AB12C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C22822C022285625009AB12C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		C22822C322285625009AB12C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C22822C522285625009AB12C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C22822CA22285625009AB12C /* MarvelAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MarvelAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C22822CE22285625009AB12C /* MarvelAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelAppTests.swift; sourceTree = "<group>"; };
@@ -104,7 +102,6 @@
 				C22822BB22285624009AB12C /* DetailViewController.swift */,
 				C22822BD22285624009AB12C /* Main.storyboard */,
 				C22822C022285625009AB12C /* Assets.xcassets */,
-				C22822C222285625009AB12C /* LaunchScreen.storyboard */,
 				C22822C522285625009AB12C /* Info.plist */,
 			);
 			path = MarvelApp;
@@ -232,7 +229,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C22822C422285625009AB12C /* LaunchScreen.storyboard in Resources */,
 				C22822C122285625009AB12C /* Assets.xcassets in Resources */,
 				C22822BF22285624009AB12C /* Main.storyboard in Resources */,
 			);
@@ -303,14 +299,6 @@
 				C22822BE22285624009AB12C /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		C22822C222285625009AB12C /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				C22822C322285625009AB12C /* Base */,
-			);
-			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -436,7 +424,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = QY583ZUB5E;
 				INFOPLIST_FILE = MarvelApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -444,6 +435,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.mv.MarvelApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -453,7 +445,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = QY583ZUB5E;
 				INFOPLIST_FILE = MarvelApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -461,6 +456,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.mv.MarvelApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
