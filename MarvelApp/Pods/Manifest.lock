@@ -1,16 +1,26 @@
 PODS:
   - Dip (7.0.0)
+  - Realm (3.13.1):
+    - Realm/Headers (= 3.13.1)
+  - Realm/Headers (3.13.1)
+  - RealmSwift (3.13.1):
+    - Realm (= 3.13.1)
 
 DEPENDENCIES:
   - Dip
+  - RealmSwift
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Dip
+    - Realm
+    - RealmSwift
 
 SPEC CHECKSUMS:
   Dip: 996ce76ec9170ca3c260683d2815596dd2bf99c6
+  Realm: 50071da38fe079e0735e47c9f2eae738c68c5996
+  RealmSwift: 8a1e6a02b7a08cd17a31e3115143fb69fe5f3fb9
 
-PODFILE CHECKSUM: 2d8fba653e05729484cf93172d02f413ea84d163
+PODFILE CHECKSUM: bf26f7ba4b6d7c8d03e61a6fff9df970c5016f09
 
 COCOAPODS: 1.6.1
