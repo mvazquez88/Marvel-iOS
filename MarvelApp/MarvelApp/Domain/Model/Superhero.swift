@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Superhero{
+class Superhero {
     
     private(set) var Name: String
     

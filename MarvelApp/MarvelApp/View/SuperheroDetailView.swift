@@ -7,16 +7,13 @@
 //
 
 import UIKit
+import Dip
 
-class SuperheroDetailView: UIViewController {
+class SuperheroDetailView: UIViewController, StoryboardInstantiatable {
     
     @IBOutlet weak var superheroName: UILabel!
     
-    var viewModel: SuperheroDetailViewModel? {
-        didSet {
-            updateView()
-        }
-    }
+    var viewModel: SuperheroListViewModel? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,7 +26,7 @@ class SuperheroDetailView: UIViewController {
             let superheroName = superheroName
             else { return }
         
-        superheroName.text = viewModel.superhero.Name
+        superheroName.text = viewModel.selectedHero?.Name ?? "No hero selected"
     }
 }
 

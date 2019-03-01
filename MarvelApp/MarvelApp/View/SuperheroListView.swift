@@ -7,21 +7,12 @@
 //
 
 import UIKit
+import Dip
 
-class SuperheroListView: UITableViewController {
+class SuperheroListView: UITableViewController, StoryboardInstantiatable {
 
-    var superheroDetailView: SuperheroDetailView? = nil
-    let viewModel = SuperheroListViewModel()
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        if let split =  splitViewController {
-            let controllers = split.viewControllers
-            superheroDetailView = (controllers.last as! UINavigationController).topViewController as? SuperheroDetailView
-        }
-    }
-
+    var viewModel : SuperheroListViewModel!
+    
     override func viewWillAppear(_ animated: Bool) {
         clearsSelectionOnViewWillAppear = splitViewController!.isCollapsed
         super.viewWillAppear(animated)
@@ -58,9 +49,8 @@ class SuperheroListView: UITableViewController {
             let controller = (segue.destination as? UINavigationController)?.topViewController as? SuperheroDetailView
             else { return }
         
-        controller.viewModel = SuperheroDetailViewModel(viewModel.superheroes[indexPath.row])
+        viewModel.selectHero(viewModel.superheroes[indexPath.row])
         controller.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
         controller.navigationItem.leftItemsSupplementBackButton = true
     }
 }
-

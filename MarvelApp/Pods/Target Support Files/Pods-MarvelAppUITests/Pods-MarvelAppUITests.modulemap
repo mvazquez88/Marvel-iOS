@@ -1,0 +1,6 @@
+framework module Pods_MarvelAppUITests {
+  umbrella header "Pods-MarvelAppUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}

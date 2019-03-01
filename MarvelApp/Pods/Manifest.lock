@@ -1,0 +1,16 @@
+PODS:
+  - Dip (7.0.0)
+
+DEPENDENCIES:
+  - Dip
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Dip
+
+SPEC CHECKSUMS:
+  Dip: 996ce76ec9170ca3c260683d2815596dd2bf99c6
+
+PODFILE CHECKSUM: 2d8fba653e05729484cf93172d02f413ea84d163
+
+COCOAPODS: 1.6.1

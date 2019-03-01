@@ -8,7 +8,7 @@
 
 import Foundation
 
-class SuperheroViewModel{
+class SuperheroViewModel {
     
     private let superhero: Superhero
     
