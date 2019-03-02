@@ -1,5 +1,6 @@
 PODS:
   - Alamofire (4.8.1)
+  - CryptoSwift (0.14.0)
   - Dip (7.0.0)
   - Realm (3.13.1):
     - Realm/Headers (= 3.13.1)
@@ -20,6 +21,7 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire
+  - CryptoSwift
   - Dip
   - RealmSwift
   - RxBlocking
@@ -30,6 +32,7 @@ DEPENDENCIES:
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Alamofire
+    - CryptoSwift
     - Dip
     - Realm
     - RealmSwift
@@ -41,6 +44,7 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   Alamofire: 16ce2c353fb72865124ddae8a57c5942388f4f11
+  CryptoSwift: 35a10419f4dbf0619c13f8c1c180037e115323fa
   Dip: 996ce76ec9170ca3c260683d2815596dd2bf99c6
   Realm: 50071da38fe079e0735e47c9f2eae738c68c5996
   RealmSwift: 8a1e6a02b7a08cd17a31e3115143fb69fe5f3fb9
@@ -50,6 +54,6 @@ SPEC CHECKSUMS:
   RxSwift: 92fcf68dfef21f3e2ab1965363d9e7b3d787597e
   RxTest: f8e548755ca3c7502dc41c7d3b28802c90115a38
 
-PODFILE CHECKSUM: 4e4f4f91b62f1b50aa6d04ddef0b6b60ac169561
+PODFILE CHECKSUM: be010dceefcb6509d1f39096de3545021cf5f21a
 
 COCOAPODS: 1.6.1

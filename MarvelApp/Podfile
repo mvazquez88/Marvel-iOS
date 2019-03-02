@@ -11,6 +11,7 @@ target 'MarvelApp' do
   pod 'RxSwift'
   pod 'RxCocoa'
   pod 'Alamofire'
+  pod 'CryptoSwift'
 
   target 'MarvelAppTests' do
     inherit! :search_paths
