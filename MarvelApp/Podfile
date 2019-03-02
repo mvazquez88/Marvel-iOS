@@ -10,6 +10,7 @@ target 'MarvelApp' do
   pod 'RealmSwift'
   pod 'RxSwift'
   pod 'RxCocoa'
+  pod 'Alamofire'
 
   target 'MarvelAppTests' do
     inherit! :search_paths
