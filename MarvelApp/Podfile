@@ -8,10 +8,15 @@ target 'MarvelApp' do
   # Pods for MarvelApp
   pod "Dip"
   pod 'RealmSwift'
+  pod 'RxSwift'
+  pod 'RxCocoa'
 
   target 'MarvelAppTests' do
     inherit! :search_paths
     # Pods for testing
+
+    pod 'RxBlocking'
+    pod 'RxTest'
   end
 
   target 'MarvelAppUITests' do
