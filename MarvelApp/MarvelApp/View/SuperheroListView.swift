@@ -13,6 +13,11 @@ class SuperheroListView: UITableViewController, StoryboardInstantiatable {
 
     var viewModel : SuperheroListViewModel!
     
+    override func viewDidLoad() {
+        viewModel.initialize()
+        super.viewDidLoad()
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         clearsSelectionOnViewWillAppear = splitViewController!.isCollapsed
         super.viewWillAppear(animated)
@@ -39,7 +44,7 @@ class SuperheroListView: UITableViewController, StoryboardInstantiatable {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
 
-        cell.textLabel!.text =  viewModel.superheroes[indexPath.row].Name
+        cell.textLabel!.text =  viewModel.superheroes[indexPath.row].name
         return cell
     }
     

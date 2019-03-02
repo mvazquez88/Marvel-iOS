@@ -7,12 +7,12 @@
 //
 
 import Foundation
+import RealmSwift
 
-class Superhero {
-    
-    private(set) var Name: String
-    
-    init() {
-        Name = String(NSUUID().uuidString.prefix(10))
-    }
+class Superhero: Object {
+    @objc dynamic var id = 0
+    @objc dynamic var name = ""
+    @objc dynamic var biography = ""
+    @objc dynamic var lastModified = Date()
+    @objc dynamic var thumbnail = ""
 }

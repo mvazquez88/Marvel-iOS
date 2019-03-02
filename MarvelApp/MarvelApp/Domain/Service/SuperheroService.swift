@@ -7,10 +7,31 @@
 //
 
 import Foundation
+import RealmSwift
 
-class SuperheroService{
+class SuperheroService {
     
-     func fetchSuperheroes() -> [Superhero] {
-        return (0...20).map { _ in Superhero() }
+    let realm = try! Realm()
+    
+    func fetchSuperheroes(_ offset:Int = 0, _ count:Int = 20) -> [Superhero] {
+        let heroes = realm.objects(Superhero.self).sorted(byKeyPath: "id")
+        let end = min(offset+count, heroes.count) - 1
+        return Array(heroes[offset...end])
+    }
+    
+    func seedInitialData() {
+        if realm.objects(Superhero.self).count > 0 { return }
+        
+        try! realm.write {
+
+            for i in 1...200 {
+                let hero = Superhero()
+                hero.id = i
+                hero.name = "Hero\(i)"
+                hero.biography = "Bio\(i)"
+                hero.lastModified = Date()
+                realm.add(hero)
+            }
+        }
     }
 }

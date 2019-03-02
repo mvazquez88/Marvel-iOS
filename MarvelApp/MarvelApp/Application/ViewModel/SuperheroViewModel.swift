@@ -11,10 +11,16 @@ import Foundation
 class SuperheroViewModel {
     
     private let superhero: Superhero
+    private let dateFormatter: DateFormatter
     
-    var Name: String { return superhero.Name }
+    var name: String { return superhero.name }
+    var biography: String { return superhero.biography }
+    var lastModified: String { return dateFormatter.string(from: superhero.lastModified) }
     
     init(_ superhero: Superhero) {
         self.superhero = superhero
+        
+        dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MMMM d, yyyy 'at' H:mm:ss"
     }
 }

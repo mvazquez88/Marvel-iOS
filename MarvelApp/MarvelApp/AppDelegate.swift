@@ -20,6 +20,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         let navigationController = splitViewController.viewControllers.last as! UINavigationController
         navigationController.topViewController!.navigationItem.leftBarButtonItem = splitViewController.displayModeButtonItem
         splitViewController.delegate = self
+        
+        let heroService = try! compositionRoot.container.resolve() as SuperheroService
+        heroService.seedInitialData()
+        
         return true
     }
 

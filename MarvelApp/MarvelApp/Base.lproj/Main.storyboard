@@ -34,8 +34,20 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="APL-aq-vlc" userLabel="lblSuperheroName">
-                                <rect key="frame" x="166.5" y="104" width="42" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="APL-aq-vlc" userLabel="lblSuperheroName">
+                                <rect key="frame" x="165" y="104" width="45" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bio" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="841-dw-CgZ" userLabel="lblBiogprahy">
+                                <rect key="frame" x="175.5" y="130" width="24.5" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last Modified" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Igx-Tg-st3" userLabel="lblLastModified">
+                                <rect key="frame" x="135.5" y="156" width="104" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -43,8 +55,12 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="841-dw-CgZ" firstAttribute="centerX" secondItem="APL-aq-vlc" secondAttribute="centerX" id="AYF-Fv-iJQ"/>
+                            <constraint firstItem="841-dw-CgZ" firstAttribute="top" secondItem="APL-aq-vlc" secondAttribute="bottom" constant="5" id="Beq-ZC-gIW"/>
+                            <constraint firstItem="Igx-Tg-st3" firstAttribute="centerX" secondItem="APL-aq-vlc" secondAttribute="centerX" id="fm4-6B-rXs"/>
                             <constraint firstItem="APL-aq-vlc" firstAttribute="top" secondItem="VUw-jc-0yf" secondAttribute="top" constant="40" id="fry-Bu-c9K"/>
                             <constraint firstItem="APL-aq-vlc" firstAttribute="centerX" secondItem="VUw-jc-0yf" secondAttribute="centerX" id="gz9-cN-4NG"/>
+                            <constraint firstItem="Igx-Tg-st3" firstAttribute="top" secondItem="841-dw-CgZ" secondAttribute="bottom" constant="5" id="qKe-vc-fmT"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="VUw-jc-0yf"/>
                     </view>
@@ -54,7 +70,9 @@
                         <userDefinedRuntimeAttribute type="string" keyPath="dipTag" value="SuperheroDetailView"/>
                     </userDefinedRuntimeAttributes>
                     <connections>
-                        <outlet property="superheroName" destination="APL-aq-vlc" id="yIy-9B-M3v"/>
+                        <outlet property="lblBiography" destination="841-dw-CgZ" id="rIp-mY-FPs"/>
+                        <outlet property="lblLastModified" destination="Igx-Tg-st3" id="WAf-Dl-Sh0"/>
+                        <outlet property="lblName" destination="APL-aq-vlc" id="leY-jh-Ja9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FJe-Yq-33r" sceneMemberID="firstResponder"/>
