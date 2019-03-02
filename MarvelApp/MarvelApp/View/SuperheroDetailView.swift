@@ -28,6 +28,7 @@ class SuperheroDetailView: UIViewController, StoryboardInstantiatable {
             let lblName = lblName
             else { return }
         
+        navigationItem.title = viewModel.selectedHero?.name
         lblName.text = viewModel.selectedHero?.name ?? "No hero selected"
         lblLastModified.text = viewModel.selectedHero?.biography ?? ""
         lblBiography.text = viewModel.selectedHero?.lastModified ?? ""

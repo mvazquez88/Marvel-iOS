@@ -16,6 +16,8 @@ class SuperheroListView: UITableViewController, StoryboardInstantiatable {
     override func viewDidLoad() {
         viewModel.initialize()
         super.viewDidLoad()
+        
+        tableView.prefetchDataSource = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -33,19 +35,29 @@ class SuperheroListView: UITableViewController, StoryboardInstantiatable {
 
     // MARK: - Table View
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.superheroes.count
+        return viewModel.totalSuperheroes
     }
-
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-
-        cell.textLabel!.text =  viewModel.superheroes[indexPath.row].name
+        
+        if isLoadingCell(for: indexPath) {
+            cell.textLabel!.text =  ""
+        } else {
+            cell.textLabel!.text =  viewModel.superheroes[indexPath.row].name
+        }
+        
         return cell
+    }
+    
+    func onFetchCompleted(with newIndexPathsToReload: [IndexPath]?) {
+        guard let newIndexPathsToReload = newIndexPathsToReload else {
+            tableView.reloadData()
+            return
+        }
+        let indexPathsToReload = visibleIndexPathsToReload(intersecting: newIndexPathsToReload)
+        tableView.reloadRows(at: indexPathsToReload, with: .automatic)
     }
     
     private func showSuperheroDetails(_ segue: UIStoryboardSegue) {
@@ -57,5 +69,27 @@ class SuperheroListView: UITableViewController, StoryboardInstantiatable {
         viewModel.selectHero(viewModel.superheroes[indexPath.row])
         controller.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
         controller.navigationItem.leftItemsSupplementBackButton = true
+    }
+}
+
+extension SuperheroListView: UITableViewDataSourcePrefetching {
+    func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
+        if indexPaths.contains(where: isLoadingCell) {
+            viewModel.fetchSuperheroes()
+            onFetchCompleted(with: .none)
+        }
+    }
+}
+
+private extension SuperheroListView {
+    
+    func isLoadingCell(for indexPath: IndexPath) -> Bool {
+        return indexPath.row >= viewModel.superheroes.count
+    }
+    
+    func visibleIndexPathsToReload(intersecting indexPaths: [IndexPath]) -> [IndexPath] {
+        let indexPathsForVisibleRows = tableView.indexPathsForVisibleRows ?? []
+        let indexPathsIntersection = Set(indexPathsForVisibleRows).intersection(indexPaths)
+        return Array(indexPathsIntersection)
     }
 }

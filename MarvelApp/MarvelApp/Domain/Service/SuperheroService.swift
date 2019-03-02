@@ -15,8 +15,15 @@ class SuperheroService {
     
     func fetchSuperheroes(_ offset:Int = 0, _ count:Int = 20) -> [Superhero] {
         let heroes = realm.objects(Superhero.self).sorted(byKeyPath: "id")
-        let end = min(offset+count, heroes.count) - 1
-        return Array(heroes[offset...end])
+        
+        let start = min(offset, heroes.count - 1)
+        let end = min(start+count, heroes.count) - 1
+        
+        return start < end ? Array(heroes[start...end]) : [Superhero]()
+    }
+    
+    func totalHeroes() -> Int {
+        return realm.objects(Superhero.self).count
     }
     
     func seedInitialData() {
