@@ -13,6 +13,7 @@ target 'MarvelApp' do
   pod 'Alamofire'
   pod 'CryptoSwift'
   pod 'SwiftyJSON'
+  pod 'SDWebImage'
 
   target 'MarvelAppTests' do
     inherit! :search_paths
