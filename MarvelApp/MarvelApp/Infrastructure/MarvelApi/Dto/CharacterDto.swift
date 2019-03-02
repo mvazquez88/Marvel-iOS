@@ -14,10 +14,22 @@ public struct CharacterDto {
     public let id: Int
     public let name: String?
     public let description: String?
+    public let urls: [UrlDto]
+    public let thumbnail: String
+    public let comics: MediaListDto
+    public let series: MediaListDto
+    public let events: MediaListDto
+    public let stories: MediaListDto
     
     init(_ json: JSON) {
         id = json["id"].intValue
         name = json["name"].stringValue
         description = json["description"].stringValue
+        urls = json["urls"].arrayValue.map{ UrlDto($0) }
+        thumbnail = "\(json["thumbnail"]["path"].stringValue).\(json["thumbnail"]["extension"].stringValue)"
+        comics = MediaListDto(json["comics"])
+        series = MediaListDto(json["series"])
+        events = MediaListDto(json["events"])
+        stories = MediaListDto(json["stories"])
     }
 }

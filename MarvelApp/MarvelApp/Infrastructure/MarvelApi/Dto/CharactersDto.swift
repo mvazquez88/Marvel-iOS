@@ -19,12 +19,10 @@ public struct CharactersDto {
     
     init(_ json: JSON) {
         let data = json["data"]
-        
         offset = data["offset"].intValue
         limit = data["limit"].intValue
         count = data["count"].intValue
         total = data["total"].intValue
-        
         characters = data["results"].arrayValue.map { CharacterDto($0) }
     }
 }
