@@ -12,20 +12,17 @@ import RxSwift
 class SuperheroListViewModel {
     
     let pageSize = 20
+    
     let superheroService: SuperheroService
+    
     let superheroes = Variable<[SuperheroViewModel]>([])
     let selectedHero = Variable<SuperheroViewModel?>(nil)
     
+    var canLoadMore: Bool { return superheroService.remoteSuperheroesCount > superheroService.localSuperheroesCount }
     private var isFetchInProgress = false
-    private(set) var totalSuperheroes = 0
     
     init(_ superheroService: SuperheroService) {
         self.superheroService = superheroService
-    }
-    
-    func initialize() {
-        fetchSuperheroes()
-        totalSuperheroes = superheroService.totalHeroes()
     }
     
     func selectHero(_ superhero: SuperheroViewModel){
@@ -33,17 +30,13 @@ class SuperheroListViewModel {
     }
     
     func fetchSuperheroes() {
-        guard !isFetchInProgress else {
-            return
-        }
-        
+        guard !isFetchInProgress else { return }
+
         isFetchInProgress = true
-
-        superheroes.value += superheroService
-            .fetchSuperheroes(superheroes.value.count, pageSize)
-            .map{ SuperheroViewModel($0) }
-
-        isFetchInProgress = false
+        superheroService.fetchSuperheroes(superheroes.value.count, pageSize) { (superheroes) in
+            self.superheroes.value += superheroes.map{ SuperheroViewModel($0) }
+            self.isFetchInProgress = false
+        }
     }
 
 }

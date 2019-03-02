@@ -15,4 +15,13 @@ class Superhero: Object {
     @objc dynamic var biography = ""
     @objc dynamic var lastModified = Date()
     @objc dynamic var thumbnail = ""
+
+    convenience init(_ character: CharacterDto) {
+        self.init()
+        
+        self.id = character.id
+        self.name = character.name ?? ""
+        self.biography = character.description ?? ""
+    }
+    
 }

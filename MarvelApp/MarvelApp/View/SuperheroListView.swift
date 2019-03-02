@@ -16,7 +16,7 @@ class SuperheroListView: UITableViewController, StoryboardInstantiatable {
     let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
-        viewModel.initialize()
+        viewModel.fetchSuperheroes()
         setupObservers()
         super.viewDidLoad()
         
@@ -57,14 +57,14 @@ class SuperheroListView: UITableViewController, StoryboardInstantiatable {
     // MARK: - Table View
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.totalSuperheroes
+        return viewModel.superheroes.value.count + (viewModel.canLoadMore ? 1 : 0)
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         
         if isLoadingCell(for: indexPath) {
-            cell.textLabel!.text =  ""
+            cell.textLabel!.text =  "loading..."
         } else {
             cell.textLabel!.text =  viewModel.superheroes.value[indexPath.row].name
         }

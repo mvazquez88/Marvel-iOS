@@ -18,6 +18,9 @@
 		C22822CF22285625009AB12C /* MarvelAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C22822CE22285625009AB12C /* MarvelAppTests.swift */; };
 		C22822DA22285625009AB12C /* MarvelAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C22822D922285625009AB12C /* MarvelAppUITests.swift */; };
 		C297A5ED222AF5810081CBCF /* MarvelApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C297A5EC222AF5810081CBCF /* MarvelApiClient.swift */; };
+		C297A5F1222AFB2B0081CBCF /* CharactersDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = C297A5F0222AFB2B0081CBCF /* CharactersDto.swift */; };
+		C297A5F3222AFB410081CBCF /* CharacterDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = C297A5F2222AFB410081CBCF /* CharacterDto.swift */; };
+		C297A5F5222B14D60081CBCF /* MarvelApiData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C297A5F4222B14D60081CBCF /* MarvelApiData.swift */; };
 		C2A5F132222886D4007D45AE /* Superhero.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2A5F131222886D4007D45AE /* Superhero.swift */; };
 		C2A5F136222887D3007D45AE /* SuperheroService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2A5F135222887D3007D45AE /* SuperheroService.swift */; };
 		C2A5F13A22288F46007D45AE /* SuperheroViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2A5F13922288F46007D45AE /* SuperheroViewModel.swift */; };
@@ -64,6 +67,9 @@
 		C22822D922285625009AB12C /* MarvelAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelAppUITests.swift; sourceTree = "<group>"; };
 		C22822DB22285625009AB12C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C297A5EC222AF5810081CBCF /* MarvelApiClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelApiClient.swift; sourceTree = "<group>"; };
+		C297A5F0222AFB2B0081CBCF /* CharactersDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersDto.swift; sourceTree = "<group>"; };
+		C297A5F2222AFB410081CBCF /* CharacterDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDto.swift; sourceTree = "<group>"; };
+		C297A5F4222B14D60081CBCF /* MarvelApiData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelApiData.swift; sourceTree = "<group>"; };
 		C2A5F131222886D4007D45AE /* Superhero.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Superhero.swift; sourceTree = "<group>"; };
 		C2A5F135222887D3007D45AE /* SuperheroService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuperheroService.swift; sourceTree = "<group>"; };
 		C2A5F13922288F46007D45AE /* SuperheroViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuperheroViewModel.swift; sourceTree = "<group>"; };
@@ -183,9 +189,27 @@
 		C297A5EB222AF5690081CBCF /* Infrastructure */ = {
 			isa = PBXGroup;
 			children = (
-				C297A5EC222AF5810081CBCF /* MarvelApiClient.swift */,
+				C297A5EE222AFAD80081CBCF /* MarvelApi */,
 			);
 			path = Infrastructure;
+			sourceTree = "<group>";
+		};
+		C297A5EE222AFAD80081CBCF /* MarvelApi */ = {
+			isa = PBXGroup;
+			children = (
+				C297A5EF222AFAE70081CBCF /* Dto */,
+				C297A5EC222AF5810081CBCF /* MarvelApiClient.swift */,
+			);
+			path = MarvelApi;
+			sourceTree = "<group>";
+		};
+		C297A5EF222AFAE70081CBCF /* Dto */ = {
+			isa = PBXGroup;
+			children = (
+				C297A5F0222AFB2B0081CBCF /* CharactersDto.swift */,
+				C297A5F2222AFB410081CBCF /* CharacterDto.swift */,
+			);
+			path = Dto;
 			sourceTree = "<group>";
 		};
 		C2A5F130222886BF007D45AE /* Domain */ = {
@@ -201,6 +225,7 @@
 			isa = PBXGroup;
 			children = (
 				C2A5F131222886D4007D45AE /* Superhero.swift */,
+				C297A5F4222B14D60081CBCF /* MarvelApiData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -510,7 +535,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				C22822BC22285624009AB12C /* SuperheroDetailView.swift in Sources */,
+				C297A5F5222B14D60081CBCF /* MarvelApiData.swift in Sources */,
+				C297A5F1222AFB2B0081CBCF /* CharactersDto.swift in Sources */,
 				C22822BA22285624009AB12C /* SuperheroListView.swift in Sources */,
+				C297A5F3222AFB410081CBCF /* CharacterDto.swift in Sources */,
 				C2A5F13A22288F46007D45AE /* SuperheroViewModel.swift in Sources */,
 				C22822B822285624009AB12C /* AppDelegate.swift in Sources */,
 				C2A5F132222886D4007D45AE /* Superhero.swift in Sources */,
