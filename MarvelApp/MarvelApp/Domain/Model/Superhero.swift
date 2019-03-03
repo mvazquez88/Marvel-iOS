@@ -19,9 +19,11 @@ class Superhero: Object {
     convenience init(_ character: CharacterDto) {
         self.init()
         
-        self.id = character.id
-        self.name = character.name ?? ""
-        self.biography = character.description ?? ""
+        id = character.id
+        name = character.name
+        biography = character.description
+        lastModified = character.modified
+        thumbnail = character.thumbnail
     }
     
 }

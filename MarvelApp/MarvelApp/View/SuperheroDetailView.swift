@@ -9,11 +9,10 @@
 import UIKit
 import Dip
 import RxSwift
+import SDWebImage
 
 class SuperheroDetailView: UIViewController, StoryboardInstantiatable {
-    @IBOutlet weak var lblName: UILabel!
-    @IBOutlet weak var lblBiography: UILabel!
-    @IBOutlet weak var lblLastModified: UILabel!
+    @IBOutlet weak var imgThumbnail: UIImageView!
     
     var disposeBag: DisposeBag? = nil
     var viewModel: SuperheroListViewModel? = nil
@@ -37,15 +36,18 @@ class SuperheroDetailView: UIViewController, StoryboardInstantiatable {
             .disposed(by: disposeBag!)
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        imgThumbnail.layer.cornerRadius = imgThumbnail.frame.width / 2
+    }
+    
     private func updateView(){
         guard let superhero = viewModel?.selectedHero.value else {
             return
         }
 
         navigationItem.title = superhero.name
-        lblName.text = superhero.name
-        lblLastModified.text = superhero.biography
-        lblBiography.text = superhero.lastModified
+        imgThumbnail.sd_setImage(with: URL(string: superhero.thumbnailUrl))
     }
 }
 

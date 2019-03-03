@@ -16,6 +16,7 @@ class SuperheroViewModel {
     var name: String { return superhero.name }
     var biography: String { return superhero.biography }
     var lastModified: String { return dateFormatter.string(from: superhero.lastModified) }
+    var thumbnailUrl: String { return superhero.thumbnail.replacingOccurrences(of: "http:", with: "https:") }
     
     init(_ superhero: Superhero) {
         self.superhero = superhero
