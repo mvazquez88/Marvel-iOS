@@ -17,6 +17,7 @@ class SuperheroDetailView: UIViewController, StoryboardInstantiatable {
     @IBOutlet weak var lblStoriesCount: UILabel!
     @IBOutlet weak var lblEventsCount: UILabel!
     @IBOutlet weak var lblSeriesCount: UILabel!
+    @IBOutlet weak var lblBiography: UILabel!
     
     var disposeBag: DisposeBag? = nil
     var viewModel: SuperheroListViewModel? = nil
@@ -53,6 +54,7 @@ class SuperheroDetailView: UIViewController, StoryboardInstantiatable {
 
         navigationItem.title = superhero.name
         imgThumbnail.sd_setImage(with: URL(string: superhero.thumbnailUrl))
+        lblBiography.text = superhero.biography
         lblComicsCount.text = "\(superhero.comicsCount)"
         lblStoriesCount.text = "\(superhero.storiesCount)"
         lblEventsCount.text = "\(superhero.eventsCount)"
