@@ -18,6 +18,11 @@ class SuperheroViewModel {
     var lastModified: String { return dateFormatter.string(from: superhero.lastModified) }
     var thumbnailUrl: String { return superhero.thumbnail.replacingOccurrences(of: "http:", with: "https:") }
     
+    var comicsCount: Int { return superhero.comicsCount }
+    var seriesCount: Int { return superhero.seriesCount }
+    var storiesCount: Int { return superhero.storiesCount }
+    var eventsCount: Int { return superhero.eventsCount }
+    
     init(_ superhero: Superhero) {
         self.superhero = superhero
         

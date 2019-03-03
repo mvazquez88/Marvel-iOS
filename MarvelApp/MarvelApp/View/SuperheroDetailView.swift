@@ -13,11 +13,16 @@ import SDWebImage
 
 class SuperheroDetailView: UIViewController, StoryboardInstantiatable {
     @IBOutlet weak var imgThumbnail: UIImageView!
+    @IBOutlet weak var lblComicsCount: UILabel!
+    @IBOutlet weak var lblStoriesCount: UILabel!
+    @IBOutlet weak var lblEventsCount: UILabel!
+    @IBOutlet weak var lblSeriesCount: UILabel!
     
     var disposeBag: DisposeBag? = nil
     var viewModel: SuperheroListViewModel? = nil
     
     override func viewWillAppear(_ animated: Bool) {
+        navigationItem.leftBarButtonItem = nil
         setupObservers()
         super.viewDidAppear(animated)
     }
@@ -48,6 +53,10 @@ class SuperheroDetailView: UIViewController, StoryboardInstantiatable {
 
         navigationItem.title = superhero.name
         imgThumbnail.sd_setImage(with: URL(string: superhero.thumbnailUrl))
+        lblComicsCount.text = "\(superhero.comicsCount)"
+        lblStoriesCount.text = "\(superhero.storiesCount)"
+        lblEventsCount.text = "\(superhero.eventsCount)"
+        lblSeriesCount.text = "\(superhero.seriesCount)"
     }
 }
 

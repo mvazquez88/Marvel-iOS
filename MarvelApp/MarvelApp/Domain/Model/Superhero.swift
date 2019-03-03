@@ -15,6 +15,11 @@ class Superhero: Object {
     @objc dynamic var biography = ""
     @objc dynamic var lastModified = Date()
     @objc dynamic var thumbnail = ""
+    
+    @objc dynamic var comicsCount = 0
+    @objc dynamic var seriesCount = 0
+    @objc dynamic var storiesCount = 0
+    @objc dynamic var eventsCount = 0
 
     convenience init(_ character: CharacterDto) {
         self.init()
@@ -24,6 +29,11 @@ class Superhero: Object {
         biography = character.description
         lastModified = character.modified
         thumbnail = character.thumbnail
+        
+        comicsCount = character.comics.available
+        seriesCount = character.events.available
+        storiesCount = character.stories.available
+        eventsCount = character.events.available
     }
     
 }
