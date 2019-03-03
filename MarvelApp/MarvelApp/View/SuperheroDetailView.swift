@@ -21,6 +21,7 @@ class SuperheroDetailView: UIViewController, StoryboardInstantiatable {
     
     var disposeBag: DisposeBag? = nil
     var viewModel: SuperheroListViewModel? = nil
+    var moreInformationUrl: String = ""
     
     override func viewWillAppear(_ animated: Bool) {
         navigationItem.leftBarButtonItem = nil
@@ -59,6 +60,14 @@ class SuperheroDetailView: UIViewController, StoryboardInstantiatable {
         lblStoriesCount.text = "\(superhero.storiesCount)"
         lblEventsCount.text = "\(superhero.eventsCount)"
         lblSeriesCount.text = "\(superhero.seriesCount)"
+        
+        moreInformationUrl = superhero.moreInformationUrl
+    }
+    
+    @IBAction func onLearnMoreTapped(_ sender: Any) {
+        if let url = URL(string: moreInformationUrl), UIApplication.shared.canOpenURL(url) {
+            UIApplication.shared.open(url)
+        }
     }
 }
 

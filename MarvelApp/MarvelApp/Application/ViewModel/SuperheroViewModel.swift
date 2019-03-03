@@ -17,6 +17,7 @@ class SuperheroViewModel {
     var biography: String { return superhero.biography }
     var lastModified: String { return dateFormatter.string(from: superhero.lastModified) }
     var thumbnailUrl: String { return superhero.thumbnail.replacingOccurrences(of: "http:", with: "https:") }
+    var moreInformationUrl: String
     
     var comicsCount: Int { return superhero.comicsCount }
     var seriesCount: Int { return superhero.seriesCount }
@@ -28,5 +29,12 @@ class SuperheroViewModel {
         
         dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MMMM d, yyyy 'at' H:mm:ss"
+        
+        if superhero.deatailUrl.isEmpty {
+            moreInformationUrl = "https://www.marvel.com/explore"
+        } else {
+            moreInformationUrl = superhero.deatailUrl.replacingOccurrences(of: "http:", with: "https:")
+        }
+        
     }
 }
