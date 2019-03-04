@@ -29,6 +29,13 @@ class SuperheroService {
         }
     }
     
+    func clearLocalData() {
+        try! realm.write {
+            let superheroes = realm.objects(Superhero.self)
+            realm.delete(superheroes)
+        }
+    }
+    
     func fetchSuperheroes(_ offset:Int = 0, _ count:Int = 20, _ onCompleted: (([Superhero]) -> Void)?) {
         if offset+count < localSuperheroesCount {
             onCompleted?(fetchLocalSuperheroes(offset, count))

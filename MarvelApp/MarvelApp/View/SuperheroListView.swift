@@ -76,6 +76,10 @@ class SuperheroListView: UITableViewController, StoryboardInstantiatable {
     }
     
     func onFetchCompleted(with newIndexPathsToReload: [IndexPath]?) {
+        if refreshControl?.isRefreshing == true {
+            refreshControl!.endRefreshing()
+        }
+        
         guard let newIndexPathsToReload = newIndexPathsToReload else {
             tableView.reloadData()
             return
@@ -102,6 +106,10 @@ class SuperheroListView: UITableViewController, StoryboardInstantiatable {
         })
         
         super.viewWillTransition(to: size, with: coordinator)
+    }
+    
+    @IBAction func refresh(_ sender: UIRefreshControl) {
+        viewModel.refresh()
     }
 }
 

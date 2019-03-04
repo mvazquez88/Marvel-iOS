@@ -11,40 +11,43 @@ import RxSwift
 
 class SuperheroViewModel {
     
-    private let superhero: Superhero
+    let id: Int
+    let name: String
+    let biography: String
     
-    var id: Int { return superhero.id }
-    var name: String { return superhero.name }
-    var biography: String { return superhero.biography }
+    let comicsCount: Int
+    let seriesCount: Int
+    let storiesCount: Int
+    let eventsCount: Int
     
-    var lastModifiedAsTimeAgo: String {
-        return superhero.lastModified != Date.distantPast
-        ? "Updated \(superhero.lastModified.timeAgoDisplay())"
-        : "Never updated"
-    }
-    
-    var thumbnailUrl = ""
+    let lastModifiedAsTimeAgo: String
+    let thumbnailUrl: String
     let moreInformationUrl: String
 
-    var comicsCount: Int { return superhero.comicsCount }
-    var seriesCount: Int { return superhero.seriesCount }
-    var storiesCount: Int { return superhero.storiesCount }
-    var eventsCount: Int { return superhero.eventsCount }
-    
     var isFavorite = Variable<Bool>(false)
     
     init(_ superhero: Superhero, _ isFavorite: Bool) {
-        self.superhero = superhero
-        self.isFavorite.value = isFavorite
+        id = superhero.id
+        name = superhero.name
+        biography = superhero.biography
         
-        if !superhero.thumbnail.contains("image_not_available") {
-            thumbnailUrl = superhero.thumbnail.replacingOccurrences(of: "http:", with: "https:")
-        }
-
-        if superhero.deatailUrl.isEmpty {
-            moreInformationUrl = "https://www.marvel.com/explore"
-        } else {
-            moreInformationUrl = superhero.deatailUrl.replacingOccurrences(of: "http:", with: "https:")
-        }
+        comicsCount = superhero.comicsCount
+        seriesCount = superhero.seriesCount
+        storiesCount = superhero.storiesCount
+        eventsCount = superhero.eventsCount
+        
+        lastModifiedAsTimeAgo = superhero.lastModified == Date.distantPast
+            ? "Never updated"
+            : "Updated \(superhero.lastModified.timeAgoDisplay())"
+        
+        thumbnailUrl = superhero.thumbnail.contains("image_not_available")
+            ? ""
+            : superhero.thumbnail.replacingOccurrences(of: "http:", with: "https:")
+        
+        moreInformationUrl = superhero.deatailUrl.isEmpty
+            ? "https://www.marvel.com/explore"
+            : superhero.deatailUrl.replacingOccurrences(of: "http:", with: "https:")
+        
+        self.isFavorite.value = isFavorite
     }
 }

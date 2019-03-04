@@ -25,6 +25,11 @@ class SuperheroListViewModel {
         self.superheroService = superheroService
     }
     
+    func refresh() {
+        superheroService.clearLocalData()
+        fetchSuperheroes(true)
+    }
+    
     func setFavoriteHero(_ superhero: SuperheroViewModel, _ isFavorite: Bool) {
         let currentFavoriteId = superheroService.favoriteSuperheroId
         
@@ -44,13 +49,20 @@ class SuperheroListViewModel {
         selectedHero.value = superhero
     }
     
-    func fetchSuperheroes() {
+    func fetchSuperheroes(_ clear: Bool = false) {
         guard !isFetchInProgress else { return }
 
         isFetchInProgress = true
-        superheroService.fetchSuperheroes(superheroes.value.count, pageSize) { (superheroes) in
+        superheroService.fetchSuperheroes(clear ? 0 : superheroes.value.count, pageSize) { (superheroes) in
             let favoriteSuperheroId = self.superheroService.favoriteSuperheroId
-            self.superheroes.value += superheroes.map{ SuperheroViewModel($0, $0.id == favoriteSuperheroId) }
+            let superheroesViewModels = superheroes.map{ SuperheroViewModel($0, $0.id == favoriteSuperheroId) }
+            
+            if clear {
+                self.superheroes.value = superheroesViewModels
+            } else {
+                self.superheroes.value += superheroesViewModels
+            }
+            
             self.isFetchInProgress = false
         }
     }
