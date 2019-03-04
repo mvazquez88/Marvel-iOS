@@ -11,7 +11,6 @@ import UIKit
 
 class LoadingTableViewCell: UITableViewCell {
     
-
     @IBOutlet weak var spinner: UIActivityIndicatorView!
     
     override func prepareForReuse() {

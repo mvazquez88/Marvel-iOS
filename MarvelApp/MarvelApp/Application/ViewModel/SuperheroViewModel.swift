@@ -14,14 +14,16 @@ class SuperheroViewModel {
     
     var name: String { return superhero.name }
     var biography: String { return superhero.biography }
+    
     var lastModifiedAsTimeAgo: String {
         return superhero.lastModified != Date.distantPast
         ? "Updated \(superhero.lastModified.timeAgoDisplay())"
         : "Never updated"
     }
-    var thumbnailUrl: String { return superhero.thumbnail.replacingOccurrences(of: "http:", with: "https:") }
-    var moreInformationUrl: String
     
+    var thumbnailUrl = ""
+    let moreInformationUrl: String
+
     var comicsCount: Int { return superhero.comicsCount }
     var seriesCount: Int { return superhero.seriesCount }
     var storiesCount: Int { return superhero.storiesCount }
@@ -29,12 +31,15 @@ class SuperheroViewModel {
     
     init(_ superhero: Superhero) {
         self.superhero = superhero
+        
+        if !superhero.thumbnail.contains("image_not_available") {
+            thumbnailUrl = superhero.thumbnail.replacingOccurrences(of: "http:", with: "https:")
+        }
 
         if superhero.deatailUrl.isEmpty {
             moreInformationUrl = "https://www.marvel.com/explore"
         } else {
             moreInformationUrl = superhero.deatailUrl.replacingOccurrences(of: "http:", with: "https:")
         }
-        
     }
 }

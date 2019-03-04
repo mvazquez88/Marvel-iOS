@@ -10,11 +10,9 @@ import Foundation
 import UIKit
 
 class RoundedUIImageView: UIImageView {
-    
     override func layoutSubviews() {
         super.layoutSubviews()
         layer.cornerRadius = self.frame.width / 2.0
         layer.masksToBounds = true
     }
-
 }

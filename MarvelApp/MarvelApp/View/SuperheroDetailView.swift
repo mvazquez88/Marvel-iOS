@@ -59,7 +59,7 @@ class SuperheroDetailView: UIViewController, StoryboardInstantiatable {
         }
 
         navigationItem.title = superhero.name
-        imgThumbnail.sd_setImage(with: URL(string: superhero.thumbnailUrl))
+        imgThumbnail.sd_setImage(with: URL(string: superhero.thumbnailUrl), placeholderImage: UIImage.init(named: "superheroPlaceholder"))
         lblBiography.text = superhero.biography
         lblComicsCount.text = "\(superhero.comicsCount)"
         lblStoriesCount.text = "\(superhero.storiesCount)"
