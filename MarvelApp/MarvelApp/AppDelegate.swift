@@ -22,6 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         let splitViewController = window!.rootViewController as! UISplitViewController
         splitViewController.preferredDisplayMode = .allVisible
         splitViewController.delegate = self
+        customizeAppearance()
         return true
     }
 
@@ -52,6 +53,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         return rotationEnabled ? .allButUpsideDown : .portrait
     }
 
+    private func customizeAppearance() {
+        UINavigationBar.appearance().barTintColor = Colors.MarvelRed
+        UINavigationBar.appearance().tintColor = UIColor.white
+        UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.white]
+    }
+    
     // MARK: - Split view
 
     func splitViewController(_ splitViewController: UISplitViewController, collapseSecondary secondaryViewController:UIViewController, onto primaryViewController:UIViewController) -> Bool {

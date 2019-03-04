@@ -17,6 +17,7 @@
 		C22822C122285625009AB12C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C22822C022285625009AB12C /* Assets.xcassets */; };
 		C22822CF22285625009AB12C /* MarvelAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C22822CE22285625009AB12C /* MarvelAppTests.swift */; };
 		C22822DA22285625009AB12C /* MarvelAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C22822D922285625009AB12C /* MarvelAppUITests.swift */; };
+		C249D2FE222D61C000D59B03 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = C249D2FD222D61C000D59B03 /* Colors.swift */; };
 		C297A5ED222AF5810081CBCF /* MarvelApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C297A5EC222AF5810081CBCF /* MarvelApiClient.swift */; };
 		C297A5F1222AFB2B0081CBCF /* CharactersDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = C297A5F0222AFB2B0081CBCF /* CharactersDto.swift */; };
 		C297A5F3222AFB410081CBCF /* CharacterDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = C297A5F2222AFB410081CBCF /* CharacterDto.swift */; };
@@ -69,6 +70,7 @@
 		C22822D522285625009AB12C /* MarvelAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MarvelAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C22822D922285625009AB12C /* MarvelAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelAppUITests.swift; sourceTree = "<group>"; };
 		C22822DB22285625009AB12C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C249D2FD222D61C000D59B03 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		C297A5EC222AF5810081CBCF /* MarvelApiClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelApiClient.swift; sourceTree = "<group>"; };
 		C297A5F0222AFB2B0081CBCF /* CharactersDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersDto.swift; sourceTree = "<group>"; };
 		C297A5F2222AFB410081CBCF /* CharacterDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDto.swift; sourceTree = "<group>"; };
@@ -269,6 +271,7 @@
 			children = (
 				C22822B922285624009AB12C /* SuperheroListView.swift */,
 				C22822BB22285624009AB12C /* SuperheroDetailView.swift */,
+				C249D2FD222D61C000D59B03 /* Colors.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -554,6 +557,7 @@
 				C2A5F13A22288F46007D45AE /* SuperheroViewModel.swift in Sources */,
 				C22822B822285624009AB12C /* AppDelegate.swift in Sources */,
 				C297A5FB222B39900081CBCF /* UrlDto.swift in Sources */,
+				C249D2FE222D61C000D59B03 /* Colors.swift in Sources */,
 				C2A5F132222886D4007D45AE /* Superhero.swift in Sources */,
 				C2A5F136222887D3007D45AE /* SuperheroService.swift in Sources */,
 				C20E6A6522289D540074A0FD /* CompositionRoot.swift in Sources */,

@@ -23,6 +23,11 @@ class SuperheroDetailView: UIViewController, StoryboardInstantiatable {
     var viewModel: SuperheroListViewModel? = nil
     var moreInformationUrl: String = ""
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        addGradiendBackground()
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         navigationItem.leftBarButtonItem = nil
         setupObservers()
@@ -62,6 +67,18 @@ class SuperheroDetailView: UIViewController, StoryboardInstantiatable {
         lblSeriesCount.text = "\(superhero.seriesCount)"
         
         moreInformationUrl = superhero.moreInformationUrl
+    }
+    
+    private func addGradiendBackground() {
+        
+        let gradientBackground = CAGradientLayer()
+        let colorTop = Colors.MarvelRed.cgColor
+        let colorBottom = Colors.MarvelRed.withAlphaComponent(0).cgColor
+        
+        gradientBackground.colors = [colorTop, colorBottom]
+        gradientBackground.locations = [0.0, 1.0]
+        gradientBackground.frame = view.bounds
+        view.layer.insertSublayer(gradientBackground, at: 0)
     }
     
     @IBAction func onLearnMoreTapped(_ sender: Any) {
