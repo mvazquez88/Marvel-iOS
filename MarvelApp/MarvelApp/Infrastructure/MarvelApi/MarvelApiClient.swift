@@ -12,17 +12,18 @@ import CryptoSwift
 import SwiftyJSON
 
 class MarvelApiClient {
-    
     let baseUrl = "https://gateway.marvel.com:443/v1/public/"
     let privateKey = "e4e52e823b20e345816c61a10cec35e969dc4826"
     let publicKey = "6b1f9456e72529da1024b5535357362b"
     
     private func prepareRequest(_ relativeUrl: String, _ uriParameters: String) -> String {
-        
         let timestamp = Date().timeIntervalSince1970 * 1000
         let hash = "\(timestamp)\(privateKey)\(publicKey)".md5()
         return "\(baseUrl)\(relativeUrl)?ts=\(timestamp)&apikey=\(publicKey)&hash=\(hash)\(uriParameters)"
     }
+}
+
+extension MarvelApiClient: MarvelApiProtocol {
     
     func fetchSuperheroes(_ offset: Int, _ count: Int, _ onSuccess: ((CharactersDto) -> Void)?) -> Void {
         let requestUrl = prepareRequest("characters", "&offset=\(offset)&limit=\(count)")

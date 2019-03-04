@@ -12,28 +12,27 @@ import RealmSwift
 import RxSwift
 
 class SuperheroService {
+
+    let localStorage: SuperheroStorageProtocol
+    let apiClient: MarvelApiProtocol
     
-    let realm = try! Realm()
-    let apiClient = MarvelApiClient()
+    var localSuperheroesCount: Int { return localStorage.countSuperheroes() }
+    var remoteSuperheroesCount: Int { return localStorage.getMarvelData().totalSuperheroes }
+    var favoriteSuperheroId: Int { return localStorage.getMarvelData().favoriteSuperheroId }
     
-    var localSuperheroesCount: Int { return self.realm.objects(Superhero.self).count }
-    var remoteSuperheroesCount: Int { return self.realm.objects(MarvelApiData.self).first?.totalSuperheroes ?? -1 }
-    var favoriteSuperheroId: Int { return self.realm.objects(MarvelApiData.self).first?.favoriteSuperheroId ?? -1 }
+    init(_ localStorage: SuperheroStorageProtocol, _ apiClient: MarvelApiProtocol) {
+        self.localStorage = localStorage
+        self.apiClient = apiClient
+    }
     
     func setFavoriteSuperhero(_ superheroId: Int) {
-        
-        try! self.realm.write {
-            if self.realm.objects(MarvelApiData.self).count == 0 { self.realm.add(MarvelApiData()) }
-            let marvelApiData = self.realm.objects(MarvelApiData.self).first!
-            marvelApiData.favoriteSuperheroId = superheroId
+        localStorage.updateMarvelData { marvelData in
+            marvelData.favoriteSuperheroId = superheroId
         }
     }
     
     func clearLocalData() {
-        try! realm.write {
-            let superheroes = realm.objects(Superhero.self)
-            realm.delete(superheroes)
-        }
+        localStorage.deleteSuperheroes()
     }
     
     func fetchSuperheroes(_ offset:Int = 0, _ count:Int = 20, _ onCompleted: (([Superhero]) -> Void)?) {
@@ -46,24 +45,15 @@ class SuperheroService {
     
     private func fetchRemoteSuperheroes(_ offset:Int = 0, _ count:Int = 20, _ onCompleted: (() -> Void)?) {
         apiClient.fetchSuperheroes(offset, count) { (response) in
-            try! self.realm.write {
-                
-                if self.realm.objects(MarvelApiData.self).count == 0 { self.realm.add(MarvelApiData()) }
-                let marvelApiData = self.realm.objects(MarvelApiData.self).first!
-                marvelApiData.totalSuperheroes = response.total
-                
-                self.realm.add(response.characters.map { Superhero($0) })
-                onCompleted?()
-            }
+            self.localStorage.updateMarvelData({ marvelData in
+                marvelData.totalSuperheroes = response.total
+            })
+            self.localStorage.insertSuperheroes(response.characters.map { Superhero($0) })
+            onCompleted?()
         }
     }
     
     private func fetchLocalSuperheroes(_ offset:Int = 0, _ count:Int = 20) -> [Superhero] {
-        let heroes = realm.objects(Superhero.self).sorted(byKeyPath: "name")
-        
-        let start = min(offset, heroes.count - 1)
-        let end = min(start+count, heroes.count) - 1
-        
-        return start < end ? Array(heroes[start...end]) : [Superhero]()
+        return localStorage.getSuperheroes(offset, count, "name")
     }
 }

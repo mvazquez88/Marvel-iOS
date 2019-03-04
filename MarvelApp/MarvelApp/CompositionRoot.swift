@@ -15,6 +15,7 @@ class CompositionRoot {
         
         let container = DependencyContainer()
         
+        registerInfrastructure(container)
         registerDomain(container)
         registerViewModels(container)
         registerViews(container)
@@ -22,8 +23,13 @@ class CompositionRoot {
         return container
     }()
     
+    private static func registerInfrastructure(_ container: DependencyContainer) {
+        container.register(.unique) { RealmSuperheroStorage() as SuperheroStorageProtocol }
+        container.register(.unique) { MarvelApiClient() as MarvelApiProtocol }
+    }
+    
     private static func registerDomain(_ container: DependencyContainer) {
-        container.register(.unique) { SuperheroService() as SuperheroService }
+        container.register(.unique) { try SuperheroService(container.resolve(), container.resolve()) as SuperheroService }
     }
     
     private static func registerViewModels(_ container: DependencyContainer) {
