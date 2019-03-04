@@ -22,10 +22,13 @@ class SuperheroDetailView: UIViewController, StoryboardInstantiatable {
     var disposeBag: DisposeBag? = nil
     var viewModel: SuperheroListViewModel? = nil
     var moreInformationUrl: String = ""
+    let favoriteButton = FavoriteButton()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         addGradiendBackground()
+        favoriteButton.delegate = self
+        self.navigationItem.rightBarButtonItem = favoriteButton.barButton
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -67,6 +70,7 @@ class SuperheroDetailView: UIViewController, StoryboardInstantiatable {
         lblSeriesCount.text = "\(superhero.seriesCount)"
         
         moreInformationUrl = superhero.moreInformationUrl
+        favoriteButton.isFavorite = superhero.isFavorite.value
     }
     
     private func addGradiendBackground() {
@@ -85,6 +89,17 @@ class SuperheroDetailView: UIViewController, StoryboardInstantiatable {
         if let url = URL(string: moreInformationUrl), UIApplication.shared.canOpenURL(url) {
             UIApplication.shared.open(url)
         }
+    }
+}
+
+extension SuperheroDetailView: FavoriteButtonDelegate {
+    
+    func favoriteTapped(_ isFavorite: Bool) {
+        guard let superhero = viewModel?.selectedHero.value else {
+            return
+        }
+        
+        viewModel?.setFavoriteHero(superhero, isFavorite)
     }
 }
 

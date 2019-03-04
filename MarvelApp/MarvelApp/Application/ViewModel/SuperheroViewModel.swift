@@ -7,11 +7,13 @@
 //
 
 import Foundation
+import RxSwift
 
 class SuperheroViewModel {
     
     private let superhero: Superhero
     
+    var id: Int { return superhero.id }
     var name: String { return superhero.name }
     var biography: String { return superhero.biography }
     
@@ -29,8 +31,11 @@ class SuperheroViewModel {
     var storiesCount: Int { return superhero.storiesCount }
     var eventsCount: Int { return superhero.eventsCount }
     
-    init(_ superhero: Superhero) {
+    var isFavorite = Variable<Bool>(false)
+    
+    init(_ superhero: Superhero, _ isFavorite: Bool) {
         self.superhero = superhero
+        self.isFavorite.value = isFavorite
         
         if !superhero.thumbnail.contains("image_not_available") {
             thumbnailUrl = superhero.thumbnail.replacingOccurrences(of: "http:", with: "https:")

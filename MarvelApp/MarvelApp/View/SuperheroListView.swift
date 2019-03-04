@@ -22,6 +22,7 @@ class SuperheroListView: UITableViewController, StoryboardInstantiatable {
         setupObservers()
         super.viewDidLoad()
 
+        tableView.tableFooterView = UIView()
         tableView.prefetchDataSource = self
     }
     
@@ -59,7 +60,7 @@ class SuperheroListView: UITableViewController, StoryboardInstantiatable {
     // MARK: - Table View
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.superheroes.value.count + (viewModel.canLoadMore ? 1 : 0)
+        return max(viewModel.superheroes.value.count + (viewModel.canLoadMore ? 1 : 0), 1)
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

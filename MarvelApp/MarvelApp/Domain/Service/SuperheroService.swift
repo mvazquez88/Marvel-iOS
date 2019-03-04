@@ -18,6 +18,16 @@ class SuperheroService {
     
     var localSuperheroesCount: Int { return self.realm.objects(Superhero.self).count }
     var remoteSuperheroesCount: Int { return self.realm.objects(MarvelApiData.self).first?.totalSuperheroes ?? -1 }
+    var favoriteSuperheroId: Int { return self.realm.objects(MarvelApiData.self).first?.favoriteSuperheroId ?? -1 }
+    
+    func setFavoriteSuperhero(_ superheroId: Int) {
+        
+        try! self.realm.write {
+            if self.realm.objects(MarvelApiData.self).count == 0 { self.realm.add(MarvelApiData()) }
+            let marvelApiData = self.realm.objects(MarvelApiData.self).first!
+            marvelApiData.favoriteSuperheroId = superheroId
+        }
+    }
     
     func fetchSuperheroes(_ offset:Int = 0, _ count:Int = 20, _ onCompleted: (([Superhero]) -> Void)?) {
         if offset+count < localSuperheroesCount {

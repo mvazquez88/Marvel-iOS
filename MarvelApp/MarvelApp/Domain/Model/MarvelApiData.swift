@@ -11,4 +11,5 @@ import RealmSwift
 
 class MarvelApiData: Object {
     @objc dynamic var totalSuperheroes = 0
+    @objc dynamic var favoriteSuperheroId = 0
 }
