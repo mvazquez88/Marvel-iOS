@@ -15,11 +15,13 @@ class SuperheroListView: UITableViewController, StoryboardInstantiatable {
     var viewModel : SuperheroListViewModel!
     let disposeBag = DisposeBag()
     
+    var isInSplitViewPresentation: Bool { return splitViewController?.isCollapsed == false }
+    
     override func viewDidLoad() {
         viewModel.fetchSuperheroes()
         setupObservers()
         super.viewDidLoad()
-        
+
         tableView.prefetchDataSource = self
     }
     
@@ -61,13 +63,13 @@ class SuperheroListView: UITableViewController, StoryboardInstantiatable {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        
         if isLoadingCell(for: indexPath) {
-            cell.textLabel!.text =  "loading..."
-        } else {
-            cell.textLabel!.text =  viewModel.superheroes.value[indexPath.row].name
+            return tableView.dequeueReusableCell(withIdentifier: "LoadingCell", for: indexPath)
         }
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "SuperheroTableViewCell", for: indexPath) as! SuperheroTableViewCell
+        cell.updateView(viewModel.superheroes.value[indexPath.row])
+        cell.accessoryType = isInSplitViewPresentation ? .none : .disclosureIndicator
         
         return cell
     }
@@ -89,6 +91,16 @@ class SuperheroListView: UITableViewController, StoryboardInstantiatable {
         controller.navigationItem.title = viewModel.selectedHero.value?.name
         controller.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
         controller.navigationItem.leftItemsSupplementBackButton = true
+    }
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        coordinator.animate(alongsideTransition: nil, completion: { _ in
+            self.tableView.visibleCells.forEach {
+                    $0.accessoryType = self.isInSplitViewPresentation ? .none : .disclosureIndicator
+                }
+        })
+        
+        super.viewWillTransition(to: size, with: coordinator)
     }
 }
 

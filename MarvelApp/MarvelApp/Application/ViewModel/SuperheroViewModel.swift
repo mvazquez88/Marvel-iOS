@@ -11,11 +11,14 @@ import Foundation
 class SuperheroViewModel {
     
     private let superhero: Superhero
-    private let dateFormatter: DateFormatter
     
     var name: String { return superhero.name }
     var biography: String { return superhero.biography }
-    var lastModified: String { return dateFormatter.string(from: superhero.lastModified) }
+    var lastModifiedAsTimeAgo: String {
+        return superhero.lastModified != Date.distantPast
+        ? "Updated \(superhero.lastModified.timeAgoDisplay())"
+        : "Never updated"
+    }
     var thumbnailUrl: String { return superhero.thumbnail.replacingOccurrences(of: "http:", with: "https:") }
     var moreInformationUrl: String
     
@@ -26,10 +29,7 @@ class SuperheroViewModel {
     
     init(_ superhero: Superhero) {
         self.superhero = superhero
-        
-        dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "MMMM d, yyyy 'at' H:mm:ss"
-        
+
         if superhero.deatailUrl.isEmpty {
             moreInformationUrl = "https://www.marvel.com/explore"
         } else {

@@ -14,7 +14,7 @@ class Superhero: Object {
     @objc dynamic var name = ""
     @objc dynamic var biography = ""
     @objc dynamic var deatailUrl = ""
-    @objc dynamic var lastModified = Date()
+    @objc dynamic var lastModified = Date.distantPast
     @objc dynamic var thumbnail = ""
     
     @objc dynamic var comicsCount = 0
@@ -28,7 +28,12 @@ class Superhero: Object {
         id = character.id
         name = character.name
         biography = character.description
-        lastModified = character.modified
+        
+        let modifiedYear = Calendar.current.dateComponents([.year], from: character.modified).year ?? 0
+        if (modifiedYear > 1970) {
+            lastModified = character.modified
+        }
+        
         thumbnail = character.thumbnail
         
         comicsCount = character.comics.available

@@ -271,30 +271,84 @@
         <scene sceneID="smW-Zh-WAh">
             <objects>
                 <tableViewController clearsSelectionOnViewWillAppear="NO" id="7bK-jq-Zjz" customClass="SuperheroListView" customModule="MarvelApp" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="r7i-6Z-zg0">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="60" estimatedRowHeight="60" sectionHeaderHeight="28" sectionFooterHeight="28" id="r7i-6Z-zg0">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.93725490199999995" green="0.08235294118" blue="0.1176470588" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="separatorColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" textLabel="Arm-wq-HPj" style="IBUITableViewCellStyleDefault" id="WCw-Qf-5nD">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SuperheroTableViewCell" rowHeight="60" id="WCw-Qf-5nD" customClass="SuperheroTableViewCell" customModule="MarvelApp" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WCw-Qf-5nD" id="37f-cq-3Eg">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" tableViewCell="WCw-Qf-5nD" id="37f-cq-3Eg">
+                                    <rect key="frame" x="0.0" y="0.0" width="341" height="59.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Arm-wq-HPj">
-                                            <rect key="frame" x="16" y="0.0" width="343" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="h9R-Wc-jWk" userLabel="imgThumbnail" customClass="RoundedUIImageView" customModule="MarvelApp" customModuleProvider="target">
+                                            <rect key="frame" x="16" y="5" width="50" height="50"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" secondItem="h9R-Wc-jWk" secondAttribute="height" multiplier="1:1" id="9DZ-7D-3lI"/>
+                                                <constraint firstAttribute="height" constant="50" id="LkC-c3-Cin"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Superhero name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qoe-8X-6Fe" userLabel="lblName">
+                                            <rect key="frame" x="74" y="10" width="267" height="21"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Updated At" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vb0-zh-rJ5" userLabel="lblModified">
+                                            <rect key="frame" x="74" y="33" width="267" height="17"/>
+                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
+                                            <color key="textColor" red="0.96078431372549022" green="0.96078431372549022" blue="0.96078431372549022" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="h9R-Wc-jWk" firstAttribute="centerY" secondItem="37f-cq-3Eg" secondAttribute="centerY" id="IFi-zx-i3r"/>
+                                        <constraint firstItem="vb0-zh-rJ5" firstAttribute="trailing" secondItem="qoe-8X-6Fe" secondAttribute="trailing" id="Kgg-vj-sp5"/>
+                                        <constraint firstItem="vb0-zh-rJ5" firstAttribute="leading" secondItem="qoe-8X-6Fe" secondAttribute="leading" id="Kvl-Ke-Bu9"/>
+                                        <constraint firstItem="qoe-8X-6Fe" firstAttribute="leading" secondItem="h9R-Wc-jWk" secondAttribute="trailing" constant="8" id="YI9-Go-1tB"/>
+                                        <constraint firstAttribute="trailing" secondItem="qoe-8X-6Fe" secondAttribute="trailing" id="Zz3-yz-bPV"/>
+                                        <constraint firstItem="h9R-Wc-jWk" firstAttribute="leading" secondItem="37f-cq-3Eg" secondAttribute="leadingMargin" id="hV9-s6-jV5"/>
+                                        <constraint firstItem="qoe-8X-6Fe" firstAttribute="top" secondItem="h9R-Wc-jWk" secondAttribute="top" constant="5" id="jOF-2W-U7e"/>
+                                        <constraint firstItem="vb0-zh-rJ5" firstAttribute="bottom" secondItem="h9R-Wc-jWk" secondAttribute="bottom" constant="-5" id="xT4-aR-Qr5"/>
+                                    </constraints>
                                 </tableViewCellContentView>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.72817361354827881" green="0.15683227777481079" blue="0.089672930538654327" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
+                                    <outlet property="imgThumbnail" destination="h9R-Wc-jWk" id="jl0-0n-6Lg"/>
+                                    <outlet property="lblModified" destination="vb0-zh-rJ5" id="f1g-b0-mah"/>
+                                    <outlet property="lblName" destination="qoe-8X-6Fe" id="83B-Ju-sWE"/>
                                     <segue destination="vC3-pB-5Vb" kind="show" identifier="showDetail" id="6S0-TO-JiA"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="LoadingCell" rowHeight="60" id="ezn-cY-CXJ" userLabel="LoadingCell" customClass="LoadingTableViewCell" customModule="MarvelApp" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="88" width="375" height="60"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" tableViewCell="ezn-cY-CXJ" id="GDI-uF-VXf">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="59.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <activityIndicatorView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="I5j-82-HuU">
+                                            <rect key="frame" x="167.5" y="10" width="40" height="40"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="40" id="1E4-38-khD"/>
+                                                <constraint firstAttribute="width" secondItem="I5j-82-HuU" secondAttribute="height" multiplier="1:1" id="sDw-iY-uXA"/>
+                                            </constraints>
+                                            <color key="color" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </activityIndicatorView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="I5j-82-HuU" firstAttribute="centerY" secondItem="GDI-uF-VXf" secondAttribute="centerY" id="XFZ-hg-HjD"/>
+                                        <constraint firstItem="I5j-82-HuU" firstAttribute="centerX" secondItem="GDI-uF-VXf" secondAttribute="centerX" id="bjD-1o-CeI"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <color key="backgroundColor" red="0.72817361354827881" green="0.15683227777481079" blue="0.089672930538654327" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <outlet property="spinner" destination="I5j-82-HuU" id="spz-17-CLC"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -333,6 +387,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Tll-UG-LXB"/>
+        <segue reference="6S0-TO-JiA"/>
     </inferredMetricsTieBreakers>
 </document>
