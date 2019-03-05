@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import RxSwift
+import SDWebImage
 
 class SuperheroTableViewCell: UITableViewCell {
 
@@ -22,6 +23,17 @@ class SuperheroTableViewCell: UITableViewCell {
     @IBOutlet weak var imgFavorite: UIImageView!
 
     var disposeBag: DisposeBag?
+
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        imgThumbnail.sd_setShowActivityIndicatorView(true)
+        imgThumbnail.sd_setIndicatorStyle(.whiteLarge)
+    }
+
+    override func prepareForReuse() {
+        imgThumbnail.sd_cancelCurrentImageLoad()
+        super.prepareForReuse()
+    }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         backgroundColor = selected
@@ -40,6 +52,7 @@ extension SuperheroTableViewCell {
         lblName.text = superhero.name
         lblModified.text = superhero.lastModifiedAsTimeAgo
         let imageUrl = URL(string: superhero.thumbnailUrl)
+        imgThumbnail.sd_showActivityIndicatorView()
         imgThumbnail.sd_setImage(with: imageUrl, placeholderImage: SuperheroTableViewCell.placeholderImage)
         setupObservers(superhero)
     }

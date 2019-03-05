@@ -42,11 +42,11 @@ class SuperheroViewModel {
 
         thumbnailUrl = superhero.thumbnail.contains("image_not_available")
                 ? ""
-                : superhero.thumbnail.replacingOccurrences(of: "http:", with: "https:")
+                : superhero.thumbnail
 
         moreInformationUrl = superhero.detailUrl.isEmpty
                 ? "https://www.marvel.com/explore"
-                : superhero.detailUrl.replacingOccurrences(of: "http:", with: "https:")
+                : superhero.detailUrl
 
         self.isFavorite.value = isFavorite
     }
