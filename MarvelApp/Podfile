@@ -6,7 +6,7 @@ target 'MarvelApp' do
   use_frameworks!
 
   # Pods for MarvelApp
-  pod "Dip"
+  pod 'Dip'
   pod 'RealmSwift'
   pod 'RxSwift'
   pod 'RxCocoa'
@@ -19,13 +19,16 @@ target 'MarvelApp' do
     inherit! :search_paths
     # Pods for testing
 
+    pod 'Dip'
+    pod 'RealmSwift'
+    pod 'RxSwift'
+    pod 'RxCocoa'
+    pod 'Alamofire'
+    pod 'CryptoSwift'
+    pod 'SwiftyJSON'
+    pod 'SDWebImage'
     pod 'RxBlocking'
     pod 'RxTest'
-  end
-
-  target 'MarvelAppUITests' do
-    inherit! :search_paths
-    # Pods for testing
   end
 
 end

@@ -38,7 +38,7 @@ class SuperheroViewModel {
 
         lastModifiedAsTimeAgo = superhero.lastModified == Date.distantPast
                 ? "Never updated"
-                : "Updated \(superhero.lastModified.timeAgoDisplay())"
+                : "Updated \(superhero.lastModified.timeAgoString())"
 
         thumbnailUrl = superhero.thumbnail.contains("image_not_available")
                 ? ""

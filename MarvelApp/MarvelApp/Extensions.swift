@@ -9,33 +9,26 @@
 import Foundation
 
 extension Date {
-    func timeAgoDisplay() -> String {
+    func timeAgoString() -> String {
 
-        let calendar = Calendar.current
-        let minuteAgo = calendar.date(byAdding: .minute, value: -1, to: Date())!
-        let hourAgo = calendar.date(byAdding: .hour, value: -1, to: Date())!
-        let dayAgo = calendar.date(byAdding: .day, value: -1, to: Date())!
-        let weekAgo = calendar.date(byAdding: .day, value: -7, to: Date())!
-        let yearAgo = calendar.date(byAdding: .year, value: -1, to: Date())!
+        let interval = Calendar.current.dateComponents([.year, .month, .weekOfYear, .day, .hour, .minute, .second],
+                                                       from: self, to: Date())
 
-        if minuteAgo < self {
-            let diff = Calendar.current.dateComponents([.second], from: self, to: Date()).second ?? 0
-            return "\(diff) sec ago"
-        } else if hourAgo < self {
-            let diff = Calendar.current.dateComponents([.minute], from: self, to: Date()).minute ?? 0
-            return "\(diff) min ago"
-        } else if dayAgo < self {
-            let diff = Calendar.current.dateComponents([.hour], from: self, to: Date()).hour ?? 0
-            return "\(diff) hrs ago"
-        } else if weekAgo < self {
-            let diff = Calendar.current.dateComponents([.day], from: self, to: Date()).day ?? 0
-            return "\(diff) days ago"
-        } else if yearAgo < self {
-            let diff = Calendar.current.dateComponents([.weekOfYear], from: self, to: Date()).weekOfYear ?? 0
-            return "\(diff) weeks ago"
+        if let year = interval.year, year > 0 {
+            return "\(year) year\(year == 1 ? "" : "s") ago"
+        } else if let month = interval.month, month > 0 {
+            return "\(month) month\(month == 1 ? "" : "s") ago"
+        } else if let week = interval.weekOfYear, week > 0 {
+            return "\(week) week\(week == 1 ? "" : "s") ago"
+        } else if let day = interval.day, day > 0 {
+            return "\(day) day\(day == 1 ? "" : "s") ago"
+        } else if let hour = interval.hour, hour > 0 {
+            return "\(hour) hour\(hour == 1 ? "" : "s") ago"
+        } else if let minute = interval.minute, minute > 0 {
+            return "\(minute) minute\(minute == 1 ? "" : "s") ago"
+        } else if let second = interval.second, second > 1 {
+            return "\(second) seconds ago"
         }
-
-        let diff = Calendar.current.dateComponents([.year], from: self, to: Date()).year ?? 0
-        return "\(diff) years ago"
+        return "1 second ago"
     }
 }
