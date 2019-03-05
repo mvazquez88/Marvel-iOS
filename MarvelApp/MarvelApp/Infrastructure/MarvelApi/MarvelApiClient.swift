@@ -32,7 +32,7 @@ extension MarvelApiClient: MarvelApiProtocol {
                 .responseJSON { response in
                     switch response.result {
                     case .success(let value):
-                        onSuccess?(CharactersDto(JSON(value)))
+                        onSuccess?(CharactersDto(JSON(value)["data"]))
                     case .failure(let error):
                         print(error)
                     }

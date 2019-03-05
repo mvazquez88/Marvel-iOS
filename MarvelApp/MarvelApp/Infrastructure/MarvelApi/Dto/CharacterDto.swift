@@ -26,7 +26,7 @@ public struct CharacterDto {
         id = json["id"].intValue
         name = json["name"].stringValue
         description = json["description"].stringValue
-        modified = CharacterDto.dateFormatter.date(from: json["modified"].stringValue)!
+        modified = ISO8601DateFormatter().date(from: json["modified"].stringValue)!
         urls = json["urls"].arrayValue.map{ UrlDto($0) }
         thumbnail = "\(json["thumbnail"]["path"].stringValue).\(json["thumbnail"]["extension"].stringValue)"
         comics = MediaListDto(json["comics"])
@@ -34,11 +34,4 @@ public struct CharacterDto {
         events = MediaListDto(json["events"])
         stories = MediaListDto(json["stories"])
     }
-
-    static let dateFormatter: DateFormatter = {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
-        dateFormatter.timeZone = TimeZone(secondsFromGMT:0)
-        return dateFormatter
-    }()
 }
