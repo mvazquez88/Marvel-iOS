@@ -18,45 +18,46 @@ class SuperheroDetailView: UIViewController, StoryboardInstantiatable {
     @IBOutlet weak var lblEventsCount: UILabel!
     @IBOutlet weak var lblSeriesCount: UILabel!
     @IBOutlet weak var lblBiography: UILabel!
-    
+
     var disposeBag: DisposeBag? = nil
     var viewModel: SuperheroListViewModel? = nil
     var moreInformationUrl: String = ""
     let favoriteButton = FavoriteButton()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        addGradiendBackground()
+        addGradientBackground()
         favoriteButton.delegate = self
         self.navigationItem.rightBarButtonItem = favoriteButton.barButton
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         navigationItem.leftBarButtonItem = nil
         setupObservers()
         super.viewDidAppear(animated)
     }
-    
+
     override func viewWillDisappear(_ animated: Bool) {
         disposeBag = nil
         super.viewWillDisappear(animated)
     }
-    
+
     private func setupObservers() {
         disposeBag = DisposeBag()
         viewModel?.selectedHero.asObservable()
-            .subscribe(onNext: {
-                _ in self.updateView()
-            })
-            .disposed(by: disposeBag!)
+                .subscribe(onNext: {
+                    _ in
+                    self.updateView()
+                })
+                .disposed(by: disposeBag!)
     }
-    
+
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         imgThumbnail.layer.cornerRadius = imgThumbnail.frame.width / 2
     }
-    
-    private func updateView(){
+
+    private func updateView() {
         guard let superhero = viewModel?.selectedHero.value else {
             return
         }
@@ -68,23 +69,23 @@ class SuperheroDetailView: UIViewController, StoryboardInstantiatable {
         lblStoriesCount.text = "\(superhero.storiesCount)"
         lblEventsCount.text = "\(superhero.eventsCount)"
         lblSeriesCount.text = "\(superhero.seriesCount)"
-        
+
         moreInformationUrl = superhero.moreInformationUrl
         favoriteButton.isFavorite = superhero.isFavorite.value
     }
-    
-    private func addGradiendBackground() {
-        
+
+    private func addGradientBackground() {
+
         let gradientBackground = CAGradientLayer()
         let colorTop = Colors.MarvelRed.cgColor
         let colorBottom = Colors.MarvelRed.withAlphaComponent(0).cgColor
-        
+
         gradientBackground.colors = [colorTop, colorBottom]
         gradientBackground.locations = [0.0, 1.0]
         gradientBackground.frame = view.bounds
         view.layer.insertSublayer(gradientBackground, at: 0)
     }
-    
+
     @IBAction func onLearnMoreTapped(_ sender: Any) {
         if let url = URL(string: moreInformationUrl), UIApplication.shared.canOpenURL(url) {
             UIApplication.shared.open(url)
@@ -93,12 +94,12 @@ class SuperheroDetailView: UIViewController, StoryboardInstantiatable {
 }
 
 extension SuperheroDetailView: FavoriteButtonDelegate {
-    
+
     func favoriteTapped(_ isFavorite: Bool) {
         guard let superhero = viewModel?.selectedHero.value else {
             return
         }
-        
+
         viewModel?.setFavoriteHero(superhero, isFavorite)
     }
 }

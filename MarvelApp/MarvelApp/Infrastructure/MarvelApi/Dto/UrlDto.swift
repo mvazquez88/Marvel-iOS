@@ -10,10 +10,10 @@ import Foundation
 import SwiftyJSON
 
 public struct UrlDto {
-    
+
     public let url: String
     public let type: String
-    
+
     init(_ json: JSON) {
         url = json["url"].stringValue
         type = json["type"].stringValue

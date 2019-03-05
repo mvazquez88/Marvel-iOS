@@ -11,39 +11,46 @@ import UIKit
 import RxSwift
 
 class SuperheroTableViewCell: UITableViewCell {
-    
-    private static let DefaultBackgroundColor = UIColor(red: 171/255.0, green: 54/255.0, blue: 36/255.0, alpha: 1)
-    private static let SelectedBackgroundColor = UIColor(red: 95/255.0, green: 29/255.0, blue: 76/255.0, alpha: 1)
 
-    var disposeBag: DisposeBag?
-    
+    private static let defaultBackgroundColor = UIColor(red: 171 / 255.0, green: 54 / 255.0, blue: 36 / 255.0, alpha: 1)
+    private static let selectedBackgroundColor = UIColor(red: 95 / 255.0, green: 29 / 255.0, blue: 76 / 255.0, alpha: 1)
+    private static let placeholderImage = UIImage.init(named: "superheroPlaceholder")
+
     @IBOutlet weak var imgThumbnail: UIImageView!
     @IBOutlet weak var lblName: UILabel!
     @IBOutlet weak var lblModified: UILabel!
     @IBOutlet weak var imgFavorite: UIImageView!
-    
+
+    var disposeBag: DisposeBag?
+
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        backgroundColor = selected
+                ? SuperheroTableViewCell.selectedBackgroundColor
+                : SuperheroTableViewCell.defaultBackgroundColor
+    }
+
+    override func setHighlighted(_ highlighted: Bool, animated: Bool) {
+        setSelected(highlighted, animated: animated)
+    }
+}
+
+extension SuperheroTableViewCell {
+
     func updateView(_ superhero: SuperheroViewModel) {
         lblName.text = superhero.name
         lblModified.text = superhero.lastModifiedAsTimeAgo
-        imgThumbnail.sd_setImage(with: URL(string: superhero.thumbnailUrl),
-                                 placeholderImage: UIImage.init(named: "superheroPlaceholder"))
+        let imageUrl = URL(string: superhero.thumbnailUrl)
+        imgThumbnail.sd_setImage(with: imageUrl, placeholderImage: SuperheroTableViewCell.placeholderImage)
         setupObservers(superhero)
     }
-    
+
     private func setupObservers(_ superhero: SuperheroViewModel) {
         disposeBag = DisposeBag()
         superhero.isFavorite.asObservable()
-            .subscribe(onNext: {
-                isFavorite in self.imgFavorite.isHidden = !isFavorite
-            })
-            .disposed(by: disposeBag!)
-    }
-    
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        backgroundColor = selected ? SuperheroTableViewCell.SelectedBackgroundColor : SuperheroTableViewCell.DefaultBackgroundColor
-    }
-    
-    override func setHighlighted(_ highlighted: Bool, animated: Bool) {
-        setSelected(highlighted, animated: animated)
+                .subscribe(onNext: {
+                    isFavorite in
+                    self.imgFavorite.isHidden = !isFavorite
+                })
+                .disposed(by: disposeBag!)
     }
 }

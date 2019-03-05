@@ -9,6 +9,6 @@
 import UIKit
 
 struct Colors {
-    static let MarvelRed = UIColor(red: 239/255.0, green: 21/255.0, blue: 30/255.0, alpha: 1.0)
+    static let MarvelRed = UIColor(red: 239 / 255.0, green: 21 / 255.0, blue: 30 / 255.0, alpha: 1.0)
 }
 

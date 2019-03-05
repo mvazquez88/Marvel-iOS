@@ -10,10 +10,10 @@ import Foundation
 import SwiftyJSON
 
 public struct MediaDto {
-    
+
     public let name: String
     public let type: String
-    
+
     init(_ json: JSON) {
         name = json["name"].stringValue
         type = json["type"].stringValue

@@ -10,14 +10,14 @@ import Foundation
 
 extension Date {
     func timeAgoDisplay() -> String {
-        
+
         let calendar = Calendar.current
         let minuteAgo = calendar.date(byAdding: .minute, value: -1, to: Date())!
         let hourAgo = calendar.date(byAdding: .hour, value: -1, to: Date())!
         let dayAgo = calendar.date(byAdding: .day, value: -1, to: Date())!
         let weekAgo = calendar.date(byAdding: .day, value: -7, to: Date())!
         let yearAgo = calendar.date(byAdding: .year, value: -1, to: Date())!
-        
+
         if minuteAgo < self {
             let diff = Calendar.current.dateComponents([.second], from: self, to: Date()).second ?? 0
             return "\(diff) sec ago"
@@ -34,7 +34,7 @@ extension Date {
             let diff = Calendar.current.dateComponents([.weekOfYear], from: self, to: Date()).weekOfYear ?? 0
             return "\(diff) weeks ago"
         }
-        
+
         let diff = Calendar.current.dateComponents([.year], from: self, to: Date()).year ?? 0
         return "\(diff) years ago"
     }

@@ -10,11 +10,11 @@ import Foundation
 import SwiftyJSON
 
 public struct MediaListDto {
-    
+
     public let available: Int
     public let returned: Int
     public let items: [MediaDto]
-    
+
     init(_ json: JSON) {
         available = json["available"].intValue
         returned = json["returned"].intValue

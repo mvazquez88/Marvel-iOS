@@ -9,16 +9,16 @@
 import Foundation
 
 protocol SuperheroStorageProtocol {
-    
+
     func countSuperheroes() -> Int
-    
+
     func getSuperheroes(_ offset: Int, _ limit: Int, _ sortedBy: String) -> [Superhero]
-    
+
     func insertSuperheroes(_ superheroes: [Superhero])
-    
+
     func deleteSuperheroes()
-    
+
     func getMarvelData() -> MarvelApiData
-    
-    func updateMarvelData(_ update: (MarvelApiData) -> Void )
+
+    func updateMarvelData(_ update: (MarvelApiData) -> Void)
 }

@@ -1,5 +1,5 @@
 //
-//  CharactedDto.swift
+//  CharacteDto.swift
 //  MarvelApp
 //
 //  Created by Marcelo Vazquez on 02/03/2019.
@@ -10,7 +10,7 @@ import Foundation
 import SwiftyJSON
 
 public struct CharacterDto {
-    
+
     public let id: Int
     public let name: String
     public let description: String
@@ -21,7 +21,7 @@ public struct CharacterDto {
     public let series: MediaListDto
     public let events: MediaListDto
     public let stories: MediaListDto
-    
+
     init(_ json: JSON) {
         id = json["id"].intValue
         name = json["name"].stringValue
@@ -33,9 +33,8 @@ public struct CharacterDto {
         series = MediaListDto(json["series"])
         events = MediaListDto(json["events"])
         stories = MediaListDto(json["stories"])
-        
     }
-    
+
     static let dateFormatter: DateFormatter = {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"

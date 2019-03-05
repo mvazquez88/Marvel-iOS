@@ -13,37 +13,37 @@ class Superhero: Object {
     @objc dynamic var id = 0
     @objc dynamic var name = ""
     @objc dynamic var biography = ""
-    @objc dynamic var deatailUrl = ""
+    @objc dynamic var detailUrl = ""
     @objc dynamic var lastModified = Date.distantPast
     @objc dynamic var thumbnail = ""
-    
+
     @objc dynamic var comicsCount = 0
     @objc dynamic var seriesCount = 0
     @objc dynamic var storiesCount = 0
     @objc dynamic var eventsCount = 0
-    
+
     convenience init(_ character: CharacterDto) {
         self.init()
-        
+
         id = character.id
         name = character.name
         biography = character.description
-        
+
         let modifiedYear = Calendar.current.dateComponents([.year], from: character.modified).year ?? 0
         if (modifiedYear > 1970) {
             lastModified = character.modified
         }
-        
+
         thumbnail = character.thumbnail
-        
+
         comicsCount = character.comics.available
         seriesCount = character.events.available
         storiesCount = character.stories.available
         eventsCount = character.events.available
-        
-        deatailUrl = (character.urls.first{ $0.type == "wiki" }
+
+        detailUrl = (character.urls.first{ $0.type == "wiki" }
             ?? character.urls.first{ $0.type == "detail" })?.url
             ?? ""
     }
-    
+
 }
