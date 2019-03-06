@@ -1,23 +1,18 @@
 PODS:
   - Alamofire (4.8.1)
   - CryptoSwift (0.14.0)
-  - Dip (7.0.0)
+  - Dip (7.0.1)
+  - InstantMock (2.2.3)
   - Realm (3.13.1):
     - Realm/Headers (= 3.13.1)
   - Realm/Headers (3.13.1)
   - RealmSwift (3.13.1):
     - Realm (= 3.13.1)
   - RxAtomic (4.4.1)
-  - RxBlocking (4.4.1):
-    - RxAtomic (~> 4.4)
-    - RxSwift (~> 4.0)
   - RxCocoa (4.4.1):
     - RxSwift (~> 4.0)
   - RxSwift (4.4.1):
     - RxAtomic (~> 4.4)
-  - RxTest (4.4.1):
-    - RxAtomic (~> 4.4)
-    - RxSwift (~> 4.0)
   - SDWebImage (4.4.6):
     - SDWebImage/Core (= 4.4.6)
   - SDWebImage/Core (4.4.6)
@@ -27,11 +22,10 @@ DEPENDENCIES:
   - Alamofire
   - CryptoSwift
   - Dip
+  - InstantMock
   - RealmSwift
-  - RxBlocking
   - RxCocoa
   - RxSwift
-  - RxTest
   - SDWebImage
   - SwiftyJSON
 
@@ -40,30 +34,28 @@ SPEC REPOS:
     - Alamofire
     - CryptoSwift
     - Dip
+    - InstantMock
     - Realm
     - RealmSwift
     - RxAtomic
-    - RxBlocking
     - RxCocoa
     - RxSwift
-    - RxTest
     - SDWebImage
     - SwiftyJSON
 
 SPEC CHECKSUMS:
   Alamofire: 16ce2c353fb72865124ddae8a57c5942388f4f11
   CryptoSwift: 35a10419f4dbf0619c13f8c1c180037e115323fa
-  Dip: 996ce76ec9170ca3c260683d2815596dd2bf99c6
+  Dip: 79509d5dc4f648e10e922ed79c608a7761c52b13
+  InstantMock: 2060ca959fbe0ce51acd189c7cbde09aa5f39662
   Realm: 50071da38fe079e0735e47c9f2eae738c68c5996
   RealmSwift: 8a1e6a02b7a08cd17a31e3115143fb69fe5f3fb9
   RxAtomic: f8d6adc1ccb87a767811269e4875887bc74dbf19
-  RxBlocking: 5508e90d36ca2304632dc9378ece4e9b5d4bf656
   RxCocoa: 2f35a76bf8887872e28a1914112395b11b8e0e64
   RxSwift: 92fcf68dfef21f3e2ab1965363d9e7b3d787597e
-  RxTest: f8e548755ca3c7502dc41c7d3b28802c90115a38
   SDWebImage: 3f3f0c02f09798048c47a5ed0a13f17b063572d8
   SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
 
-PODFILE CHECKSUM: 22375726eb99abd2a8c0d1de1c9973093ea7bc07
+PODFILE CHECKSUM: 8687e48c95d23f959c6ced98c5d7502b61b1ebdc
 
 COCOAPODS: 1.6.1
