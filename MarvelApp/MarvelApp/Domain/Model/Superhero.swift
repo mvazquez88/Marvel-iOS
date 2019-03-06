@@ -29,7 +29,7 @@ class Superhero: Object {
         name = character.name
         biography = character.description
 
-        let modifiedYear = Calendar.current.dateComponents([.year], from: character.modified).year ?? 0
+        let modifiedYear = Calendar.current.dateComponents([.year], from: character.modified).year!
         if (modifiedYear > 1970) {
             lastModified = character.modified
         }
@@ -37,7 +37,7 @@ class Superhero: Object {
         thumbnail = character.thumbnail
 
         comicsCount = character.comics.available
-        seriesCount = character.events.available
+        seriesCount = character.series.available
         storiesCount = character.stories.available
         eventsCount = character.events.available
 
