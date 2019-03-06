@@ -21,7 +21,7 @@ class SuperheroServiceTests: XCTestCase {
         
         superheroStorageMock.updateMarvelData { (apiData) in
             apiData.totalSuperheroes = 1845
-            apiData.favoriteSuperheroId = 14
+            apiData.favoriteSuperheroIds.append(14)
         }
         
         superheroStorageMock.stub().call(
@@ -110,7 +110,7 @@ class SuperheroServiceTests: XCTestCase {
             superheroStorageMock.getMarvelData()
         )
         
-        XCTAssertEqual(14, superheroService.favoriteSuperheroId)
+        XCTAssertTrue(superheroService.isFavoriteSuperhero(14))
         superheroStorageMock.verify()
     }
     
@@ -122,10 +122,24 @@ class SuperheroServiceTests: XCTestCase {
             superheroStorageMock.updateMarvelData(closure)
         )
         
-        superheroService.setFavoriteSuperhero(27)
+        superheroService.setFavoriteSuperhero(27, true)
         
         superheroStorageMock.verify()
-        XCTAssertEqual(27, superheroService.favoriteSuperheroId)
+        XCTAssertTrue(superheroService.isFavoriteSuperhero(27))
+    }
+    
+    func testSetFavoriteSuperheroRemoveFavoriteWhenNoLongerFavorite() {
+        let superheroService = SuperheroService(superheroStorageMock, MarvelApiMock())
+        let closure : (MarvelApiData) -> Void = Arg.closure()
+        
+        superheroStorageMock.expect().call(
+            superheroStorageMock.updateMarvelData(closure)
+        )
+        
+        superheroService.setFavoriteSuperhero(14, false)
+        
+        superheroStorageMock.verify()
+        XCTAssertFalse(superheroService.isFavoriteSuperhero(14))
     }
     
     func testClearLocalDataDeletesSuperheroes() {

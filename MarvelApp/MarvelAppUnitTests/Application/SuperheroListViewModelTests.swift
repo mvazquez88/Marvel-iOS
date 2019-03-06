@@ -112,4 +112,23 @@ class SuperheroListViewModelTests: XCTestCase {
      
         superheroServiceMock.verify()
     }
+    
+    func testSetFavoriteSuperheroPropagateChanges() {
+        let superheroListViewModel = SuperheroListViewModel(superheroServiceMock)
+        
+        let superhero = SuperheroViewModel(Superhero(CharacterDto(CharacterDtoTests().characterJson)), false)
+        
+        superheroServiceMock.expect().call(
+            superheroServiceMock.setFavoriteSuperhero(Arg.eq(superhero.id), Arg.eq(true)), count: 1
+        )
+        
+        superheroServiceMock.expect().call(
+            superheroServiceMock.setFavoriteSuperhero(Arg.eq(superhero.id), Arg.eq(false)), count: 1
+        )
+    
+        superheroListViewModel.setFavoriteHero(superhero, true)
+        superheroListViewModel.setFavoriteHero(superhero, false)
+
+        superheroServiceMock.verify()
+    }
 }

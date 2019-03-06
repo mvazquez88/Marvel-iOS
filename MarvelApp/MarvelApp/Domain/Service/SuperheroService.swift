@@ -22,18 +22,29 @@ class SuperheroService: SuperheroServiceProtocol {
     var remoteSuperheroesCount: Int {
         return localStorage.getMarvelData().totalSuperheroes
     }
-    var favoriteSuperheroId: Int {
-        return localStorage.getMarvelData().favoriteSuperheroId
-    }
 
     init(_ localStorage: SuperheroStorageProtocol, _ apiClient: MarvelApiProtocol) {
         self.localStorage = localStorage
         self.apiClient = apiClient
     }
+    
+    func isFavoriteSuperhero(_ superheroId: Int) -> Bool {
+        return localStorage.getMarvelData().favoriteSuperheroIds.contains(superheroId)
+    }
 
-    func setFavoriteSuperhero(_ superheroId: Int) {
+    func setFavoriteSuperhero(_ superheroId: Int, _ isFavorite: Bool) {
         localStorage.updateMarvelData { marvelData in
-            marvelData.favoriteSuperheroId = superheroId
+            
+            if !isFavorite {
+                if let index = marvelData.favoriteSuperheroIds.firstIndex(of: superheroId) {
+                    marvelData.favoriteSuperheroIds.remove(at: index)
+                }
+                return
+            } else {
+                if  marvelData.favoriteSuperheroIds.firstIndex(of: superheroId) == nil {
+                    marvelData.favoriteSuperheroIds.append(superheroId)
+                }
+            }
         }
     }
 

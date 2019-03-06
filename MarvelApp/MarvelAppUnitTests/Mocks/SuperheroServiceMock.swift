@@ -17,10 +17,12 @@ class SuperheroServiceMock: Mock, SuperheroServiceProtocol {
     
     var remoteSuperheroesCount: Int = -1
     
-    var favoriteSuperheroId: Int = -1
+    func isFavoriteSuperhero(_ superheroId: Int) -> Bool {
+        return super.call(superheroId) ?? false
+    }
     
-    func setFavoriteSuperhero(_ superheroId: Int) {
-        super.call(superheroId)
+    func setFavoriteSuperhero(_ superheroId: Int, _ favorite: Bool) {
+        super.call(superheroId, favorite)
     }
     
     func clearLocalData() {

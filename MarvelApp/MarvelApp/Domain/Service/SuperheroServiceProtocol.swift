@@ -14,9 +14,9 @@ protocol SuperheroServiceProtocol {
     
     var remoteSuperheroesCount: Int { get }
     
-    var favoriteSuperheroId: Int { get }
+    func isFavoriteSuperhero(_ superheroId: Int) -> Bool
     
-    func setFavoriteSuperhero(_ superheroId: Int)
+    func setFavoriteSuperhero(_ superheroId: Int, _ isFavorite: Bool)
     
     func clearLocalData()
     

@@ -11,5 +11,5 @@ import RealmSwift
 
 class MarvelApiData: Object {
     @objc dynamic var totalSuperheroes = -1
-    @objc dynamic var favoriteSuperheroId = -1
+    let favoriteSuperheroIds = List<Int>()
 }
