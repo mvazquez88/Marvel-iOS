@@ -13,7 +13,7 @@ class SuperheroListViewModel {
 
     let pageSize = 20
 
-    let superheroService: SuperheroService
+    let superheroService: SuperheroServiceProtocol
 
     let superheroes = Variable<[SuperheroViewModel]>([])
     let selectedHero = Variable<SuperheroViewModel?>(nil)
@@ -23,7 +23,7 @@ class SuperheroListViewModel {
     }
     private var isFetchInProgress = false
 
-    init(_ superheroService: SuperheroService) {
+    init(_ superheroService: SuperheroServiceProtocol) {
         self.superheroService = superheroService
     }
 

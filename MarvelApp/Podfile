@@ -13,17 +13,9 @@ target 'MarvelApp' do
   pod 'SwiftyJSON'
   pod 'SDWebImage'
 
-  target 'MarvelAppTests' do
+  target 'MarvelAppUnitTests' do
     use_frameworks!
     inherit! :search_paths
     pod 'InstantMock'
-    pod 'Dip'
-    pod 'RealmSwift'
-    pod 'RxSwift'
-    pod 'RxCocoa'
-    pod 'Alamofire'
-    pod 'CryptoSwift'
-    pod 'SwiftyJSON'
-    pod 'SDWebImage'
   end
 end

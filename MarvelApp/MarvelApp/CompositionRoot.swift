@@ -34,7 +34,7 @@ class CompositionRoot {
 
     private static func registerDomain(_ container: DependencyContainer) {
         container.register(.unique) {
-            try SuperheroService(container.resolve(), container.resolve()) as SuperheroService
+            try SuperheroService(container.resolve(), container.resolve()) as SuperheroServiceProtocol
         }
     }
 

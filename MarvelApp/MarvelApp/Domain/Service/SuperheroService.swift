@@ -11,7 +11,7 @@ import Alamofire
 import RealmSwift
 import RxSwift
 
-class SuperheroService {
+class SuperheroService: SuperheroServiceProtocol {
 
     let localStorage: SuperheroStorageProtocol
     let apiClient: MarvelApiProtocol
