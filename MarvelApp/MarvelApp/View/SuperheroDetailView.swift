@@ -18,7 +18,8 @@ class SuperheroDetailView: UIViewController, StoryboardInstantiatable {
     @IBOutlet weak var lblEventsCount: UILabel!
     @IBOutlet weak var lblSeriesCount: UILabel!
     @IBOutlet weak var lblBiography: UILabel!
-
+    @IBOutlet weak var vwEmptyState: UIView!
+    
     var disposeBag: DisposeBag? = nil
     var viewModel: SuperheroListViewModel? = nil
     var moreInformationUrl: String = ""
@@ -59,6 +60,7 @@ class SuperheroDetailView: UIViewController, StoryboardInstantiatable {
 
     private func updateView() {
         guard let superhero = viewModel?.selectedHero.value else {
+            vwEmptyState.isHidden = false
             return
         }
 
@@ -72,6 +74,7 @@ class SuperheroDetailView: UIViewController, StoryboardInstantiatable {
 
         moreInformationUrl = superhero.moreInformationUrl
         favoriteButton.isFavorite = superhero.isFavorite.value
+        vwEmptyState.isHidden = true
     }
 
     private func addGradientBackground() {
